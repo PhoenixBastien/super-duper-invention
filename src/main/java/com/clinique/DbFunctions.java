@@ -72,10 +72,25 @@ public class DbFunctions {
                 "', succursale = '" + succursale + "' WHERE user_id = " + userid;
         stmt.execute(sql1);
         stmt.execute(sql2);
-
     }
 
     // method add and mod patient for patients aged > 16
+    public static void addPatient(String nom, String prenom, String password, String sexe,
+                                  String ssn, String tel, String dateDeNaissance, String adresse,
+                                  String codePostal, String province, String ville, String email,
+                                  String numAssurance, String succursale) throws SQLException {
+        Statement stmt = db.createStatement();
+        String sql1, sql2;
+        sql1 = "INSERT INTO utilisateur VALUES (DEFAULT, '" + password + "', '" + nom + "', '" + prenom + "', '" +
+                sexe + "', '" + ssn + "', '" + tel + "', DATE'" + dateDeNaissance + "', '" + adresse + "', '" +
+                codePostal + "', '" + province + "', '" + ville + "', '', '', '')";
+        sql2 = "INSERT INTO patient VALUES ((SELECT user_id FROM utilisateur WHERE nom  = '" + nom +
+                "' AND prenom = '" + prenom + "'), '" + email + "', '" + numAssurance + "', '" + succursale + "')";
+        stmt.execute(sql1);
+        stmt.execute(sql2);
+    }
+
+    // method add and mod patient for patients aged >= 16
     public static void addPatient(String nom, String prenom, String password, String sexe,
                                   String ssn, String tel, String dateDeNaissance, String adresse,
                                   String codePostal, String province, String ville, String email,
