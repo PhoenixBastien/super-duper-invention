@@ -45,14 +45,11 @@ public class DbFunctions {
             String succursale) throws SQLException {
         Statement stmt = db.createStatement();
         String sql1, sql2;
-        sql1 = "INSERT INTO utilisateur (user_id, user_password, nom, prenom, sexe, ssn, tel, date_de_naissance,age " +
-                ",adresse, code_postal, province, ville, prenom_parent, nom_parent, relation_avec_enfant) " +
-                "VALUES ( DEFAULT,'" + password + "', '" + nom + "', '" + prenom + "', '" + sexe + "', " + ssn + ", '" +
+        sql1 = "INSERT INTO utilisateur VALUES ( DEFAULT,'" + password + "', '" + nom + "', '" + prenom + "', '" + sexe + "', " + ssn + ", '" +
                 tel + "', '" + dateDeNaissance + "',DEFAULT, '" + adresse + "', '" + codePostale + "', '" + province +
                 "', '" + ville + "', '" + prenomParent + "', '" + nomParent + "', '" + relation + "')";
         stmt.execute(sql1);
-        sql2 = "INSERT INTO patient (user_id, email, num_assurance, succursale) " +
-                "VALUES ((SELECT user_id FROM utilisateur WHERE nom = '" + nom + "' AND prenom = '" + prenom + "'), '" +
+        sql2 = "INSERT INTO patient VALUES ((SELECT user_id FROM utilisateur WHERE nom = '" + nom + "' AND prenom = '" + prenom + "'), '" +
                 email + "', '" + numAssurance + "', '" + succursale + "')";
 
         stmt.execute(sql2);
@@ -86,14 +83,11 @@ public class DbFunctions {
             String numAssurance, String succursale) throws SQLException {
         Statement stmt = db.createStatement();
         String sql1, sql2;
-        sql1 = "INSERT INTO utilisateur (user_id, user_password, nom, prenom, " +
-                "sexe, ssn, tel, date_de_naissance,age, adresse, code_postal, province, ville,prenom_parent,nom_parent,relation_avec_enfant) " +
-                "VALUES (DEFAULT,'" + password + "', '" + nom + "', '" + prenom + "', '" + sexe + "', " + ssn +
+        sql1 = "INSERT INTO utilisateur VALUES (DEFAULT,'" + password + "', '" + nom + "', '" + prenom + "', '" + sexe + "', " + ssn +
                 ", '" + tel + "', DATE '" + dateDeNaissance + "',DEFAULT, '" + adresse + "', '" + codePostale +
                 "', '" + province + "', '" + ville + "', '', '', '')";
         stmt.execute(sql1);
-        sql2 = "INSERT INTO patient (user_id, email, num_assurance, succursale) " +
-                "VALUES ((SELECT user_id FROM utilisateur WHERE nom  = '" + nom + "' AND prenom = '" + prenom + "'), '" +
+        sql2 = "INSERT INTO patientVALUES ((SELECT user_id FROM utilisateur WHERE nom  = '" + nom + "' AND prenom = '" + prenom + "'), '" +
                 email + "', '" + numAssurance + "', '" + succursale + "')";
 
         stmt.execute(sql2);
@@ -123,9 +117,7 @@ public class DbFunctions {
             String prenomHygieniste, String dateRv, String heureDebut, String heureFin,
             String typeRv, String statut, int chambre) throws SQLException {
         Statement stmt = db.createStatement();
-        String sql = "INSERT INTO rendez_vous (id_appointment, succ, id_patient, id_dentiste, id_hygieniste, " +
-                "date_rv, heure_debut, heure_fin, type_rv, statut, chambre) " +
-                "VALUES (DEFAULT, '" + succ + "', " + getUserid(nomPatient, prenomPatient) + ", " +
+        String sql = "INSERT INTO VALUES (DEFAULT, '" + succ + "', " + getUserid(nomPatient, prenomPatient) + ", " +
                 getUserid(nomDentiste, prenomDentiste) + ", " + getUserid(nomHygieniste, prenomHygieniste) +
                 ", DATE '" + dateRv + "', time '" + heureDebut + "',time '" + heureFin + "', '" + typeRv + "', '" + statut +
                 "', " + chambre + ")";
