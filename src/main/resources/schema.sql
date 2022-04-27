@@ -106,7 +106,7 @@ CREATE TABLE facture_rv ( #permet de lister tous les rendez_vous inclues dans ch
   PRIMARY KEY (id_facture, id_appointment)
 );
 
-CREATE TABLE procédure (
+CREATE TABLE procedure (
   id_procedure SERIAL PRIMARY KEY,
   type_de_procedure VARCHAR(255) NOT NULL,
   description VARCHAR(255),
