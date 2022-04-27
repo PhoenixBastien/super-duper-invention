@@ -1,24 +1,24 @@
 use Dentistry;
 
-INSERT INTO utilisateur VALUES (DEFAULT,'AntMan','Ant','Man','M',11111,'111-111-1111',DATE'1973-11-22',DEFAULT,'2015 wasp','AAA MMM','California','San Francisco','','','');
-INSERT INTO utilisateur VALUES (DEFAULT, 'Vision', 'Vision', 'Maximoff', 'M', 22222, '222-222-2222', DATE'2019-10-29',DEFAULT, '1800 Palos Verdes Drive', 'VVV MMM', 'California', 'Palos Verdes', 'Ultron', 'Stark', 'Createur');
-INSERT INTO utilisateur VALUES ( DEFAULT,'TeenageGroot', 'Teenage', 'Groot', 'M', 33333, '333-333-3333', DATE'2018-04-04',DEFAULT, '2014 iamgroot', 'TTT GGG', 'Branch World', 'Planet X', 'Rocket', 'The raccoon', 'Gardien');
-INSERT INTO utilisateur VALUES (DEFAULT,'SpiderMan', 'Spider', 'Man', 'M', 44444, '444-444-4444', DATE'2008-09-27',DEFAULT, '2001 webshooter', 'SSS MMM', 'Queens', 'Forest Hills','May','Parker','Tante');
-INSERT INTO utilisateur VALUES (DEFAULT, 'Gamora', 'Gamora', 'Quill', 'F', 55555, '555-555-5555', DATE'1992-01-10',DEFAULT, '23 daugther of Thanos', 'GGG QQQ', 'Zehoberei', 'Galaxy','','','');
-INSERT INTO utilisateur VALUES (DEFAULT, 'Nebula', 'Nebula', 'Robot', 'F', 66666, '666-666-6666', DATE'1991-06-18',DEFAULT, '98 other daugther of Thanos', 'NNN RRR', 'The Lab', 'Dying Star','','','');
-INSERT INTO utilisateur VALUES ( DEFAULT,'Mantis', 'Mantis', 'Drax', 'F', 77777, '777-777-7777', DATE'1989-03-10',DEFAULT, '32 ego', 'MMM DDD', 'Celestial Realm', 'Egos Mind','','','');
-INSERT INTO utilisateur VALUES (DEFAULT,'BlackWidow', 'Black', 'Widow', 'F', 88888, '888-888-8888', DATE'1984-11-22', DEFAULT,'123 Redhead street', 'BBB WWW', 'Stalingrad', 'Alianovna','','','');
-INSERT INTO utilisateur VALUES (DEFAULT, 'NickFury', 'Nick', 'Fury', 'M', 99999, '999-999-9999', DATE'1951-05-30',DEFAULT, '4 shield', 'NNN FFF', 'Alabama', 'Huntsville','','','');
-INSERT INTO utilisateur VALUES ( DEFAULT,'WarMachine', 'War', 'Machine', 'M', 101010, '101-101-1010', DATE'1968-10-08',DEFAULT, '89 military base', 'WWW MMM', 'New York', 'Queens','','','');
-INSERT INTO utilisateur VALUES (DEFAULT, 'Hulk', 'Hulk', 'Green', 'M', 111111, '111-011-1111', DATE'2011-12-18',DEFAULT, '33 the lab street', 'HHH GGG', 'Ohio', 'Dayton','Bruce','Banner','Alter ego');
-INSERT INTO utilisateur VALUES (DEFAULT,'Drax', 'Drax', 'Bautitas', 'M', 121212, '121-121-1212', DATE'1970-08-25',DEFAULT, '84 The Destroyer', 'DDD BBB', 'California', 'Burbank','','','');
-INSERT INTO utilisateur VALUES ( DEFAULT,'IronMan', 'Iron', 'Man', 'M', 131313, '131-131-1313', DATE'1970-05-29',DEFAULT, '73 stark tower', 'III MMM', 'New York', 'Long Island','','','');
-INSERT INTO utilisateur VALUES ( DEFAULT,'Hawkeye', 'Hawkeye', 'Barton', 'M', 141414, '141-141-1414', DATE'1971-03-29',DEFAULT, '100 ranch', 'HHH BBB', 'Iowa', 'Waverly','','','');
-INSERT INTO utilisateur VALUES (DEFAULT, 'BlackPanther', 'Black', 'Panther', 'M', 151515, '151-151-1515', DATE'1976-04-02',DEFAULT, '54 panthers tree', 'BBB PPP', 'Africa', 'Wakanda','','','');
-INSERT INTO utilisateur VALUES ( DEFAULT,'DoctorStrange', 'Doctor', 'Strange', 'M', 161616, '161-161-1616', DATE'1969-09-19',DEFAULT, '54 first street', 'DDD SSS', 'New Jersey', 'New York','','','');
-INSERT INTO utilisateur VALUES ( DEFAULT,'Thanos', 'Thanos', 'Purple', 'M', 171717, '171-171-1717', DATE'1982-01-01',DEFAULT, '100 the mad titan', 'TTT PPP', 'Planet Titan', 'Infinity Gauntlet','','','');
-INSERT INTO utilisateur VALUES (DEFAULT, 'AncientOne', 'Ancient', 'One', 'F', 181818, '181-181-1818', DATE'2000-10-29',DEFAULT, '500 timestone', 'HHH KKK', 'Himalayas', 'Kamar-Taj','','','');
-INSERT INTO utilisateur VALUES (DEFAULT,'Starlord', 'Star', 'Lord', 'M', 191919, '191-191-1919', DATE'1972-05-12',DEFAULT, '395 demigod', 'PPP QQQ', 'New Jersey', 'New York','','','');
+INSERT INTO utilisateur VALUES (DEFAULT,'AntMan','Man','Ant','M',11111,'111-111-1111',DATE'1973-11-22',DEFAULT,'2015 wasp','AAA MMM','California','San Francisco','','','');
+INSERT INTO utilisateur VALUES (DEFAULT, 'Vision', 'Maximoff', 'Vision', 'M', 22222, '222-222-2222', DATE'2019-10-29',DEFAULT, '1800 Palos Verdes Drive', 'VVV MMM', 'California', 'Palos Verdes', 'Ultron', 'Stark', 'Createur');
+INSERT INTO utilisateur VALUES (DEFAULT,'TeenageGroot', 'Groot', 'Teenage', 'M', 33333, '333-333-3333', DATE'2018-04-04',DEFAULT, '2014 iamgroot', 'TTT GGG', 'Branch World', 'Planet X', 'Rocket', 'The raccoon', 'Gardien');
+INSERT INTO utilisateur VALUES (DEFAULT,'SpiderMan', 'Man', 'Spider', 'M', 44444, '444-444-4444', DATE'2008-09-27',DEFAULT, '2001 webshooter', 'SSS MMM', 'Queens', 'Forest Hills','May','Parker','Tante');
+INSERT INTO utilisateur VALUES (DEFAULT, 'Gamora', 'Quill', 'Gamora', 'F', 55555, '555-555-5555', DATE'1992-01-10',DEFAULT, '23 daugther of Thanos', 'GGG QQQ', 'Zehoberei', 'Galaxy','','','');
+INSERT INTO utilisateur VALUES (DEFAULT, 'Nebula', 'Robot', 'Nebula', 'F', 66666, '666-666-6666', DATE'1991-06-18',DEFAULT, '98 other daugther of Thanos', 'NNN RRR', 'The Lab', 'Dying Star','','','');
+INSERT INTO utilisateur VALUES (DEFAULT,'Mantis', 'Drax', 'Mantis', 'F', 77777, '777-777-7777', DATE'1989-03-10',DEFAULT, '32 ego', 'MMM DDD', 'Celestial Realm', 'Egos Mind','','','');
+INSERT INTO utilisateur VALUES (DEFAULT,'BlackWidow', 'Widow', 'Black', 'F', 88888, '888-888-8888', DATE'1984-11-22', DEFAULT,'123 Redhead street', 'BBB WWW', 'Stalingrad', 'Alianovna','','','');
+INSERT INTO utilisateur VALUES (DEFAULT, 'NickFury', 'Fury', 'Nick', 'M', 99999, '999-999-9999', DATE'1951-05-30',DEFAULT, '4 shield', 'NNN FFF', 'Alabama', 'Huntsville','','','');
+INSERT INTO utilisateur VALUES (DEFAULT,'WarMachine', 'Machine', 'War', 'M', 101010, '101-101-1010', DATE'1968-10-08',DEFAULT, '89 military base', 'WWW MMM', 'New York', 'Queens','','','');
+INSERT INTO utilisateur VALUES (DEFAULT, 'Hulk', 'Green', 'Hulk', 'M', 111111, '111-011-1111', DATE'2011-12-18',DEFAULT, '33 the lab street', 'HHH GGG', 'Ohio', 'Dayton','Bruce','Banner','Alter ego');
+INSERT INTO utilisateur VALUES (DEFAULT,'Drax', 'Bautitas', 'Drax', 'M', 121212, '121-121-1212', DATE'1970-08-25',DEFAULT, '84 The Destroyer', 'DDD BBB', 'California', 'Burbank','','','');
+INSERT INTO utilisateur VALUES (DEFAULT,'IronMan', 'Man', 'Iron', 'M', 131313, '131-131-1313', DATE'1970-05-29',DEFAULT, '73 stark tower', 'III MMM', 'New York', 'Long Island','','','');
+INSERT INTO utilisateur VALUES (DEFAULT,'Hawkeye', 'Barton', 'Hawkeye', 'M', 141414, '141-141-1414', DATE'1971-03-29',DEFAULT, '100 ranch', 'HHH BBB', 'Iowa', 'Waverly','','','');
+INSERT INTO utilisateur VALUES (DEFAULT, 'BlackPanther', 'Panther', 'Black', 'M', 151515, '151-151-1515', DATE'1976-04-02',DEFAULT, '54 panthers tree', 'BBB PPP', 'Africa', 'Wakanda','','','');
+INSERT INTO utilisateur VALUES (DEFAULT,'DoctorStrange', 'Strange', 'Doctor', 'M', 161616, '161-161-1616', DATE'1969-09-19',DEFAULT, '54 first street', 'DDD SSS', 'New Jersey', 'New York','','','');
+INSERT INTO utilisateur VALUES (DEFAULT,'Thanos', 'Purple', 'Thanos', 'M', 171717, '171-171-1717', DATE'1982-01-01',DEFAULT, '100 the mad titan', 'TTT PPP', 'Planet Titan', 'Infinity Gauntlet','','','');
+INSERT INTO utilisateur VALUES (DEFAULT, 'AncientOne', 'One', 'Ancient', 'F', 181818, '181-181-1818', DATE'2000-10-29',DEFAULT, '500 timestone', 'HHH KKK', 'Himalayas', 'Kamar-Taj','','','');
+INSERT INTO utilisateur VALUES (DEFAULT,'Starlord', 'Lord', 'Star', 'M', 191919, '191-191-1919', DATE'1972-05-12',DEFAULT, '395 demigod', 'PPP QQQ', 'New Jersey', 'New York','','','');
 
 INSERT INTO employe VALUES ((select user_id from utilisateur where nom  = 'Nebula'), 'Temps plein', 1006000, 'directeur de succursale',null);
 INSERT INTO employe VALUES ((select user_id from utilisateur where nom  = 'Black'AND prenom='Panther'), 'Temps plein', 1002000, 'directeur de succursale',null);
@@ -51,17 +51,17 @@ INSERT INTO employe_succursale VALUES ('New York', 9); #AncientOne
 INSERT INTO employe_succursale VALUES ('New York', 12); #Hawkeye
 INSERT INTO employe_succursale VALUES ('New York', 13); #NickFury
 
-INSERT INTO patient VALUES ( (select user_id from utilisateur where nom  = 'Vision'), 'ultron@marvel.com', 'U1', 'Wakanda');
-INSERT INTO patient VALUES ( (select user_id from utilisateur where nom  = 'Teenage'), 'rocket@marvel.com', 'TG2', 'Wakanda');
+INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Vision'), 'ultron@marvel.com', 'U1', 'Wakanda');
+INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Teenage'), 'rocket@marvel.com', 'TG2', 'Wakanda');
 INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Spider'), 'may@marvel.com', '', 'Wakanda'); #Pas dassurance
 INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Mantis'), 'mantis@marvel.com', 'M1', 'Wakanda');
-INSERT INTO patient VALUES ( (select user_id from utilisateur where nom  = 'Black'AND prenom='Widow'), 'blackwidow@marvel.com', 'B1', 'New York'); #Pas dassurance
+INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Black'AND prenom='Widow'), 'blackwidow@marvel.com', 'B1', 'New York'); #Pas dassurance
 INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Hulk'), 'bruce@marvel.com', '', 'New York');
-INSERT INTO patient VALUES ( (select user_id from utilisateur where nom  = 'Ancient'), 'ancientone@marvel.com', 'A5', 'New York');
-INSERT INTO patient VALUES ( (select user_id from utilisateur where nom  = 'War'), 'warmachine@marvel.com', 'W5', 'Wakanda');
+INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Ancient'), 'ancientone@marvel.com', 'A5', 'New York');
+INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'War'), 'warmachine@marvel.com', 'W5', 'Wakanda');
 INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Nick'), 'nick@marvel.com', 'N8', 'New York');
-INSERT INTO patient VALUES ( (select user_id from utilisateur where nom  = 'Thanos'), 'purpletitan@marvel.com', 'T2', 'New York');
-INSERT INTO patient VALUES ( (select user_id from utilisateur where nom  = 'Ant'), 'antman@marvel.com', 'A8', 'Wakanda');
+INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Thanos'), 'purpletitan@marvel.com', 'T2', 'New York');
+INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Ant'), 'antman@marvel.com', 'A8', 'Wakanda');
 INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Drax'), 'drax@marvel.com', 'D9', 'New York');
 
 INSERT INTO rendez_vous VALUES (DEFAULT, 'Wakanda', 1, 6, 10, date'2022-04-20', time'08:00', time'09:00', 'nettoyage', 'termine', 1);
@@ -105,6 +105,20 @@ INSERT INTO procedure_rv VALUES (10, 7);
 INSERT INTO procedure_rv VALUES (11, 2);
 INSERT INTO procedure_rv VALUES (12, 2);
 
+INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0,0,default);
+INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0, 0,default);
+INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0, 0,default);
+INSERT INTO frais VALUES (DEFAULT, 1, 1, 'operation et acetaminophene', 300, 30, 14,default);
+INSERT INTO frais VALUES (DEFAULT, 3, 2, 'traitement de canal et calmant', 500, 20, 14,default);
+INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0, 0,default);
+INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0, 0,default);
+INSERT INTO frais VALUES (DEFAULT, 5, 5, 'blanchiment des dents et produit blanchisseur', 500, 100, 0,default);
+INSERT INTO frais VALUES (DEFAULT, 6, NULL, 'suivi', 50, 0, 0,default);
+INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0, 0,default);
+INSERT INTO frais VALUES (DEFAULT, 7, NULL, 'consultation', 50, 0, 0,default);
+INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0, 0,default);
+INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0, 0,default);
+
 INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 1, 180, 10, 'yes');#Rabais enfant, le prix est 200$-10% = 270$
 INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 2, 180, 10, 'yes');#Rabais enfant
 INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 3, 180, 10, 'no');#Rabais enfant
@@ -117,20 +131,6 @@ INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 9, 100, 50, 'yes');#Rabai
 INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 10, 25, 50, 'yes');#Rabais employé
 INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 11, 100, 50, 'yes');#Rabais employé
 INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 12, 100, 50, 'yes');#Rabais employé
-
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 1, 'nettoyage', 200, 0,0,default);
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 2, 'nettoyage', 200, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 3, 'nettoyage', 200, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 1, 1, 4, 'operation et acetaminophene', 300, 30, 14,default);
-INSERT INTO frais VALUES (DEFAULT, 3, 2, 4, 'traitement de canal et calmant', 500, 20, 14,default);
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 5, 'nettoyage', 200, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 6, 'nettoyage', 200, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 5, 5, 7, 'blanchiment des dents et produit blanchisseur', 500, 100, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 6, NULL, 8, 'suivi', 50, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 9, 'nettoyage', 200, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 7, NULL, 10, 'consultation', 50, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 11, 'nettoyage', 200, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 12, 'nettoyage', 200, 0, 0,default);
 
 INSERT INTO facture_rv VALUES (1, 1);
 INSERT INTO facture_rv VALUES (2, 2);

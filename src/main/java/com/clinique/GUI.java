@@ -560,7 +560,7 @@ public class GUI implements java.awt.event.ActionListener {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
-                    DbFunctions.modPatient(Integer.parseInt(DbFunctions.getUserid(name.getText(), lastName.getText())),
+                    DbFunctions.modPatient(DbFunctions.getUserid(name.getText(), lastName.getText()),
                             name.getText(),
                             lastname.getText(), gender.getText(),
                             ssn.getText(), telephone.getText(),
@@ -656,7 +656,7 @@ public class GUI implements java.awt.event.ActionListener {
                     try {
                         System.out.println("test");
                         DbFunctions.modPatient(
-                                Integer.parseInt(DbFunctions.getUserid(name.getText(), lastName.getText())),
+                                DbFunctions.getUserid(name.getText(), lastName.getText()),
                                 name.getText(), lastname.getText(), gender.getText(),
                                 ssn.getText(), telephone.getText(),
                                 birthday.getText(),
