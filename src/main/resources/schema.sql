@@ -1,7 +1,7 @@
 DROP SCHEMA IF EXISTS Dentistry;
 CREATE SCHEMA Dentistry;
 
- use Dentistry;
+Use Dentistry;
 
 CREATE TABLE utilisateur (
   user_id SERIAL,
@@ -18,7 +18,7 @@ CREATE TABLE utilisateur (
   code_postal VARCHAR(7) NOT NULL, #Format: 'AAA BBB' donc 7 characters
   province VARCHAR(255) NOT NULL,
   ville VARCHAR(255),
-  # SI C'EST UN ENFANT (15 ans et moins): AJOUTER LA CONDITION DANS JAVA POUR DEMANDER LE NOM DU PARENT SI REQUIS
+  # SI CEST UN ENFANT (15 ans et moins): AJOUTER LA CONDITION DANS JAVA POUR DEMANDER LE NOM DU PARENT SI REQUIS
   prenom_parent VARCHAR(255),
   nom_parent VARCHAR(255),
   relation_avec_enfant VARCHAR(255)
@@ -58,7 +58,7 @@ CREATE TABLE facture (
   id_facture SERIAL PRIMARY KEY,
   date_demission DATE NOT NULL,
   id_patient INTEGER REFERENCES patient(id_patient) ON DELETE CASCADE ON UPDATE CASCADE,
-  frais_charge_totaux INTEGER NOT NULL, #Ici on va faire un SELECT de tous les rendez_vous d'une personne qui vont aller dans la  meme facture
+  frais_charge_totaux INTEGER NOT NULL, # Ici on va faire un SELECT de tous les rendez_vous dune personne qui vont aller dans la  meme facture
   #a partir de la table facture_rv. Ensuite on va additionner frais_totaux de la table frais de chacun des rendez_vous associes a ce patient
   reduction INTEGER, # % entre 0 et 100 / les employes ont 50% off et les enfants ont 10% off
   CONSTRAINT checkReduction check (reduction >= 0 AND reduction <= 100),
@@ -106,7 +106,7 @@ CREATE TABLE facture_rv ( #permet de lister tous les rendez_vous inclues dans ch
   PRIMARY KEY (id_facture, id_appointment)
 );
 
-CREATE TABLE procedure (
+CREATE TABLE procédure (
   id_procedure SERIAL PRIMARY KEY,
   type_de_procedure VARCHAR(255) NOT NULL,
   description VARCHAR(255),
@@ -155,7 +155,6 @@ CREATE TABLE frais (
   id_frais SERIAL PRIMARY KEY,
   id_procedure INTEGER REFERENCES procédure(id_procedure) ON DELETE CASCADE ON UPDATE CASCADE,
   id_traitement INTEGER REFERENCES traitement(id_traitement) ON DELETE CASCADE ON UPDATE CASCADE,
-  id_facture INTEGER REFERENCES facture(id_facture) ON DELETE CASCADE ON UPDATE CASCADE,
   code_frais VARCHAR(255),
   frais_procedure INTEGER NOT NULL,#ecrire 0 sil ny en a pas
   frais_traitement INTEGER NOT NULL, #ecrire 0 sil ny en a pas
