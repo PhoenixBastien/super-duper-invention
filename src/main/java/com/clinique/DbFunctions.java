@@ -73,7 +73,7 @@ public class DbFunctions {
         return true;
     }
 
-    //method add and mod patient for patients aged > 16
+    //method add and mod patient for patients aged >= 16
     public static boolean addPatient(Connection db, String nom, String prenom, String password, String sexe,
                                      String ssn, String tel, String dateDeNaissance, String adresse,
                                      String codePostal, String province, String ville, String email,
