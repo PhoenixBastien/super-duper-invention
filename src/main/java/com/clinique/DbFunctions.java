@@ -216,6 +216,33 @@ public class DbFunctions {
         return stmt.executeQuery(sql);
     }
 
+    // contrainte role : dentiste, receptionniste, hygieniste, directeur de succursale
+
+    public static void addEmployee(String nom, String prenom, String password, String sexe,
+                                   int ssn, String tel, String dateDeNaissance, String adresse,
+                                   String codePostal, String province, String ville, String type, int salaire ,
+                                   String role,String nomSupervisor, String prenomSupervisor ) throws SQLException {
+        Statement stmt = db.createStatement();
+        String sql1, sql2;
+        sql1 = "INSERT INTO utilisateur " +
+                "VALUES (DEFAULT, '" + password + "', '" + nom + "', '" + prenom + "', '" + sexe +
+                "', " + ssn + ", '" + tel + "', '" + dateDeNaissance + "', DEFAULT, '" + adresse +
+                "', '" + codePostal + "', '" + province + "', '" + ville + "', '', '', '')";
+
+        if(role.equals("directeur")){
+            sql2 = "INSERT INTO employe VALUES ((SELECT user_id FROM utilisateur WHERE nom = '" + nom +
+                    "' AND prenom = '" + prenom + "'), '" + type + "', " + salaire + ", '" +role + "',null)";
+
+        }else{
+            sql2 = "INSERT INTO employe VALUES ((SELECT user_id FROM utilisateur WHERE nom = '" + nom +
+                    "' AND prenom = '" + prenom + "'), '" + type + "', " + salaire + ", '" +role + "',"+
+                    getUserid(nomSupervisor,prenomSupervisor)+")";
+        }
+
+        stmt.execute(sql1);
+        stmt.execute(sql2);
+    }
+
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/dentistry";
         String user = "root";
