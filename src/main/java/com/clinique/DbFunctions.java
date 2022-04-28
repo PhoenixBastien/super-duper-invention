@@ -1,4 +1,4 @@
-package main.java.com.clinique;
+
 
 import java.sql.*;
 
@@ -39,7 +39,7 @@ public class DbFunctions {
 
     // method add and mod patient for patients aged < 16
     public static void addPatient(String nom, String prenom, String password, String sexe,
-                                  String ssn, String tel, String dateDeNaissance, String adresse,
+                                  int ssn, String tel, String dateDeNaissance, String adresse,
                                   String codePostal, String province, String ville, String prenomParent,
                                   String nomParent, String relation, String email, String numAssurance,
                                   String succursale) throws SQLException {
@@ -47,7 +47,7 @@ public class DbFunctions {
         String sql1, sql2;
         sql1 = "INSERT INTO utilisateur " +
                 "VALUES (DEFAULT, '" + password + "', '" + nom + "', '" + prenom + "', '" + sexe +
-                "', '" + ssn + "', '" + tel + "', '" + dateDeNaissance + "', '" + adresse +
+                "', " + ssn + ", '" + tel + "', '" + dateDeNaissance + "', DEFAULT, '" + adresse +
                 "', '" + codePostal + "', '" + province + "', '" + ville + "', '" + prenomParent +
                 "', '" + nomParent + "', '" + relation + "')";
         sql2 = "INSERT INTO patient VALUES ((SELECT user_id FROM utilisateur WHERE nom = '" + nom +
@@ -57,48 +57,33 @@ public class DbFunctions {
     }
 
     public static void modPatient(int userid, String nom, String prenom, String sexe,
-                                  String ssn, String tel, String dateDeNaissance, String adresse,
+                                  int ssn, String tel, String dateDeNaissance, String adresse,
                                   String codePostal, String province, String ville, String prenomParent,
                                   String nomParent, String relation, String email, String num_assurance,
                                   String succursale) throws SQLException {
         Statement stmt = db.createStatement();
         String sql1, sql2;
         sql1 = "UPDATE utilisateur SET nom = '" + nom + "', prenom = '" + prenom + "', sexe = '" + sexe +
-                "', ssn = '" + ssn + "', tel = '" + tel + "', date_de_naissance = DATE'" + dateDeNaissance +
-                "', adresse = '" + adresse + "', code_postal = '" + codePostal + "', province = '" + province +
-                "', ville = '" + ville + "', prenom_parent = '" + prenomParent + "', nom_parent = '" + nomParent +
-                "', relation_avec_enfant = '" + relation + "' WHERE user_id = " + userid;
-        sql2 = "UPDATE utilisateur SET email = '" + email + "', num_assurance = '" + num_assurance +
-                "', succursale = '" + succursale + "' WHERE user_id = " + userid;
+                "', ssn = " + ssn + ", tel = '" + tel + "', date_de_naissance = DATE'" + dateDeNaissance +
+                "', age = DEFAULT, adresse = '" + adresse + "', code_postal = '" + codePostal +
+                "', province = '" + province + "', ville = '" + ville + "', prenom_parent = '" + prenomParent +
+                "', nom_parent = '" + nomParent + "', relation_avec_enfant = '" + relation +
+                "' WHERE user_id = " + userid;
+        sql2 = "UPDATE patient SET email = '" + email + "', num_assurance = '" + num_assurance +
+                "', succursale = '" + succursale + "' WHERE id_patient = " + userid;
         stmt.execute(sql1);
         stmt.execute(sql2);
     }
 
     // method add and mod patient for patients aged > 16
     public static void addPatient(String nom, String prenom, String password, String sexe,
-                                  String ssn, String tel, String dateDeNaissance, String adresse,
+                                  int ssn, String tel, String dateDeNaissance, String adresse,
                                   String codePostal, String province, String ville, String email,
                                   String numAssurance, String succursale) throws SQLException {
         Statement stmt = db.createStatement();
         String sql1, sql2;
         sql1 = "INSERT INTO utilisateur VALUES (DEFAULT, '" + password + "', '" + nom + "', '" + prenom + "', '" +
-                sexe + "', '" + ssn + "', '" + tel + "', DATE'" + dateDeNaissance + "', '" + adresse + "', '" +
-                codePostal + "', '" + province + "', '" + ville + "', '', '', '')";
-        sql2 = "INSERT INTO patient VALUES ((SELECT user_id FROM utilisateur WHERE nom  = '" + nom +
-                "' AND prenom = '" + prenom + "'), '" + email + "', '" + numAssurance + "', '" + succursale + "')";
-        stmt.execute(sql1);
-        stmt.execute(sql2);
-    }
-
-    // method add and mod patient for patients aged >= 16
-    public static void addPatient(String nom, String prenom, String password, String sexe,
-                                  String ssn, String tel, String dateDeNaissance, String adresse,
-                                  String codePostal, String province, String ville, String email,
-                                  String numAssurance, String succursale) throws SQLException {
-        Statement stmt = db.createStatement();
-        String sql1, sql2;
-        sql1 = "INSERT INTO utilisateur VALUES (DEFAULT, '" + password + "', '" + nom + "', '" + prenom + "', '" +
-                sexe + "', '" + ssn + "', '" + tel + "', DATE'" + dateDeNaissance + "', '" + adresse + "', '" +
+                sexe + "', " + ssn + ", '" + tel + "', DATE'" + dateDeNaissance + "', DEFAULT, '" + adresse + "', '" +
                 codePostal + "', '" + province + "', '" + ville + "', '', '', '')";
         sql2 = "INSERT INTO patient VALUES ((SELECT user_id FROM utilisateur WHERE nom  = '" + nom +
                 "' AND prenom = '" + prenom + "'), '" + email + "', '" + numAssurance + "', '" + succursale + "')";
@@ -107,17 +92,17 @@ public class DbFunctions {
     }
 
     public static void modPatient(int userid, String nom, String prenom, String sexe,
-                                  String ssn, String tel, String dateDeNaissance, String adresse,
+                                  int ssn, String tel, String dateDeNaissance, String adresse,
                                   String codePostal, String province, String ville, String email,
                                   String numAssurance, String succursale) throws SQLException {
         Statement stmt = db.createStatement();
         String sql1, sql2;
         sql1 = "UPDATE utilisateur SET nom = '" + nom + "', prenom = '" + prenom + "', sexe = '" + sexe +
-                "', ssn = '" + ssn + "', tel = '" + tel + "', date_de_naissance = DATE'" + dateDeNaissance +
-                "', adresse = '" + adresse + "', code_postal = '" + codePostal + "', province = '" + province +
-                "', ville = '" + ville + "' WHERE user_id = " + userid;
-        sql2 = "UPDATE utilisateur SET email = '" + email + "', num_assurance = '" + numAssurance +
-                "', succursale = '" + succursale + "' WHERE user_id = " + userid;
+                "', ssn = " + ssn + ", tel = '" + tel + "', date_de_naissance = DATE'" + dateDeNaissance +
+                "', age = DEFAULT, adresse = '" + adresse + "', code_postal = '" + codePostal +
+                "', province = '" + province + "', ville = '" + ville + "' WHERE user_id = " + userid;
+        sql2 = "UPDATE patient SET email = '" + email + "', num_assurance = '" + numAssurance +
+                "', succursale = '" + succursale + "' WHERE id_patient = " + userid;
         stmt.execute(sql1);
         stmt.execute(sql2);
     }
@@ -151,7 +136,7 @@ public class DbFunctions {
 
         String sql1 = "insert into procedure_rv values (" + rv_id + ", " + procedure + ");";
         String sql2 = "insert into frais values (default, " + procedure + ", " + traitement + ", '" +
-                typeRv + "', (select frais from procedure where id_procedure = " + procedure +
+                typeRv + "', (select frais from procédure where id_procedure = " + procedure +
                 "), (select frais from traitement where id_traitement = " + traitement + "), " +
                 penalite + ", default);";
         stmt.execute(sql1);
@@ -190,8 +175,30 @@ public class DbFunctions {
         return stmt.executeQuery(sql);
     }
 
-    public static void getFacture() {
+    // contrainte role : dentiste, receptionniste, hygieniste, directeur de succursale
 
+    public static void addemployee(String nom, String prenom, String password, String sexe,
+                                  int ssn, String tel, String dateDeNaissance, String adresse,
+                                  String codePostal, String province, String ville, String type, int salaire ,
+                                  String role,String nomSupervisor, String prenomSupervisor ) throws SQLException {
+        Statement stmt = db.createStatement();
+        String sql1, sql2;
+        sql1 = "INSERT INTO utilisateur " +
+                "VALUES (DEFAULT, '" + password + "', '" + nom + "', '" + prenom + "', '" + sexe +
+                "', " + ssn + ", '" + tel + "', '" + dateDeNaissance + "', DEFAULT, '" + adresse +
+                "', '" + codePostal + "', '" + province + "', '" + ville + "', '', '', '')";
+
+        if(role=="directeur"){
+            sql2 = "INSERT INTO employe VALUES ((SELECT user_id FROM utilisateur WHERE nom = '" + nom +
+                    "' AND prenom = '" + prenom + "'), '" + type + "', " + salaire + ", '" +role + "',null)";
+
+        }else{
+            sql2 = "INSERT INTO employe VALUES ((SELECT user_id FROM utilisateur WHERE nom = '" + nom +
+                    "' AND prenom = '" + prenom + "'), '" + type + "', " + salaire + ", '" +role + "',"+getUserid(nomSupervisor,prenomSupervisor)+")";
+        }
+
+        stmt.execute(sql1);
+        stmt.execute(sql2);
     }
 
     public void setFacture() {
@@ -201,12 +208,27 @@ public class DbFunctions {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/dentistry";
         String user = "root";
-        String password = "Password";///// Change this
+        String password = "MyPass";///// Change this
         try {
             db = DriverManager.getConnection(url, user, password);
 
-            GUI gc = new GUI();
-            gc.start();
+            //test addPatient sans parent
+            addPatient("nom","prenom","password","M",653589, "tel", "2018-04-04", "adresse","AAA BBB", "province", "ville","email", "numAssurance", "succursale");
+
+            //test addPatient avec parent
+            addPatient("nom2","prenom2","password2","M",653889, "tel", "2018-04-04", "adresse","AAA BBB", "province", "ville","prenomParent","nomParent","relation", "email","numAssurance", "succursale");
+
+            //test modPatient sans parent
+            modPatient(getUserid("nom","prenom"),"nom3","prenom3","M",653589, "tel", "2018-04-04", "adresse","AAA BBB", "province", "ville","email", "numAssurance", "succursale");
+
+            //test modPatient avec parent
+            modPatient(getUserid("nom2","prenom2"),"nom4","prenom4","M",658589, "tel", "2018-04-04", "adresse","AAA BBB", "province", "ville","prenomParent","nomParent","relation", "email","numAssurance", "succursale");
+
+            //test add appoinment
+            addAppointment("Wakanda", "nom4", "prenom4", "Thanos", "Purple", "Nick", "Fury", "2022-04-20", "08:00","09:00", "operation","prevu",5, 1, 1);
+
+//            GUI gc = new GUI();
+//            gc.start();
 
         } catch (SQLException e) {
             e.printStackTrace();
