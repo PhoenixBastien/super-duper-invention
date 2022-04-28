@@ -174,8 +174,10 @@ public class DbFunctions {
         return stmt.executeQuery(sql);
     }
 
-    public void setFacture() {
-
+    public static ResultSet getFacture(String nom, String prenom) throws SQLException {
+        Statement stmt = db.createStatement();
+        String sql = "SELECT * FROM facture WHERE id_patient = " + getUserid(nom, prenom);
+        return stmt.executeQuery(sql);
     }
 
     public static void addFacture(String dateRv, String nomPatient,
@@ -234,6 +236,12 @@ public class DbFunctions {
 
         stmt.execute(sql1);
         stmt.execute(sql2);
+    }
+
+    public static void makePaiement(int id_facture, String dateRv) throws SQLException {
+        Statement stmt = db.createStatement();
+        String sql = "insert into paiement values (default, "+id_facture+", date'"+dateRv+"', mastercard);";
+        stmt.executeQuery(sql);
     }
 
     public static void main(String[] args) {
