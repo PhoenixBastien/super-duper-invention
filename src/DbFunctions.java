@@ -68,7 +68,7 @@ public class DbFunctions {
                 "', nom_parent = '" + nomParent + "', relation_avec_enfant = '" + relation +
                 "' WHERE user_id = " + userid;
         sql2 = "UPDATE patient SET email = '" + email + "', num_assurance = '" + num_assurance +
-                "', succursale = '" + succursale + "' WHERE id_patient = " + userid;
+                "', succursale = '" + succursale + "' WHERE user_id = " + userid;
         stmt.execute(sql1);
         stmt.execute(sql2);
     }
@@ -100,7 +100,7 @@ public class DbFunctions {
                 "', age = DEFAULT, adresse = '" + adresse + "', code_postal = '" + codePostal +
                 "', province = '" + province + "', ville = '" + ville + "' WHERE user_id = " + userid;
         sql2 = "UPDATE patient SET email = '" + email + "', num_assurance = '" + numAssurance +
-                "', succursale = '" + succursale + "' WHERE id_patient = " + userid;
+                "', succursale = '" + succursale + "' WHERE user_id = " + userid;
         stmt.execute(sql1);
         stmt.execute(sql2);
     }
@@ -133,7 +133,7 @@ public class DbFunctions {
         }
 
         String sql1 = "insert into procedure_rv values (" + rv_id + ", " + procedure + ");";
-        String sql2 = "insert into frais values (default, " + procedure + ", " + traitement + ", '" +
+        String sql2 = "insert into frais values ("+ rv_id + ", " + procedure + ", " + traitement + ", '" +
                 typeRv + "', (select frais from procédure where id_procedure = " + procedure +
                 "), (select frais from traitement where id_traitement = " + traitement + "), " +
                 penalite + ", default);";
@@ -189,12 +189,18 @@ public class DbFunctions {
             reduction = 50;
         }
         String sql1 = "select frais_totaux from frais where id_frais = "+rvID;
-        int frais = Integer.parseInt(String.valueOf(stmt.execute(sql1)));
+        ResultSet rs1 = stmt.executeQuery(sql1);
+        rs1.next();
+        int frais = Integer.parseInt(rs1.getString(1));
         float frais_totaux = frais - reduction/100*frais;
-        String sql = "insert into facture ((select id_facture from frais where id_procedure = " +
-                "(select id_procedure from procédure where)), DATE'" + dateRv + "', " + userid + ", " +
-                frais_totaux + ", " + reduction + ")";
+        String sql = "insert into facture values (default, DATE'" + dateRv + "', " + userid + ", " +
+                (int) frais_totaux + ", " + (int) reduction + ", 'yes');";
         stmt.execute(sql);
+        String sql2 = "select id_facture from facture where id_patient = "+userid+";";
+        ResultSet rs2 = stmt.executeQuery(sql2);
+        rs2.next();
+        int facture = Integer.parseInt(rs2.getString(1));
+        makePaiement(facture, dateRv);
     }
 
     // afficher la liste des dentistes dans chaque succursale
@@ -240,8 +246,27 @@ public class DbFunctions {
 
     public static void makePaiement(int id_facture, String dateRv) throws SQLException {
         Statement stmt = db.createStatement();
-        String sql = "insert into paiement values (default, "+id_facture+", date'"+dateRv+"', mastercard);";
-        stmt.executeQuery(sql);
+        String sql = "insert into paiement values (default, "+id_facture+", date'"+dateRv+"', 'mastercard');";
+        stmt.execute(sql);
+        String sql2 = "select id_paiement from paiement where id_facture = "+id_facture+";";
+        ResultSet resultSet = stmt.executeQuery(sql2);
+        resultSet.next();
+        int paiement = Integer.parseInt(resultSet.getString(1));
+        makeReclamation(paiement,65,dateRv);
+    }
+
+    public static void makeReclamation(int id_paiement, int reclamation, String dateRv) throws SQLException {
+        Statement stmt = db.createStatement();
+        String sql = "insert into reclamation values (default, "+id_paiement+ ", "+reclamation+", date'"+dateRv+"');";
+        stmt.execute(sql);
+    }
+
+    public static void makeAvis(int id_patient, int id_employe, int id_appointment, String commentaire,
+                                int communication, int proprete, int valeur) throws SQLException {
+        Statement stmt = db.createStatement();
+        String sql = "insert into avis values (default, "+id_patient+ ", "+id_employe+", " + id_appointment +
+                ", '" + commentaire + "', " + communication + ", " + proprete + ", " + valeur + ");";
+        stmt.execute(sql);
     }
 
     public static void main(String[] args) {
@@ -274,13 +299,15 @@ public class DbFunctions {
                     "numAssurance", "succursale");
 
             //test add appoinment
-            addAppointment("Wakanda", "nom4", "prenom4", "Thanos",
-                    "Purple", "Nick", "Fury", "2022-04-20",
+            addAppointment("Wakanda", "nom4", "prenom4", "Purple",
+                    "Thanos", "Fury", "Nick", "2022-04-20",
                     "08:00","09:00", "operation","prevu",5,
                     1, 1);
 
-//            GUI gc = new GUI();
-//            gc.start();
+            System.out.println("Avengers assemble!!!!!");
+
+            GUI gc = new GUI();
+            gc.start();
 
         } catch (SQLException e) {
             e.printStackTrace();
