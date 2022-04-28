@@ -1,5 +1,3 @@
-package main.java.com.clinique;
-
 import java.sql.*;
 
 public class DbFunctions {
@@ -175,7 +173,7 @@ public class DbFunctions {
         String sql = "SELECT * FROM rendez_vous WHERE id_patient = " + getUserid(nom, prenom);
         return stmt.executeQuery(sql);
     }
-    
+
     public void setFacture() {
 
     }
