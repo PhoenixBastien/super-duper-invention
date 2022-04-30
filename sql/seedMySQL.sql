@@ -20,19 +20,19 @@ INSERT INTO utilisateur VALUES (DEFAULT,'Thanos', 'Purple', 'Thanos', 'M', 17171
 INSERT INTO utilisateur VALUES (DEFAULT, 'AncientOne', 'One', 'Ancient', 'F', 181818, '181-181-1818', DATE'2000-10-29',DEFAULT, '500 timestone', 'HHH KKK', 'Himalayas', 'Kamar-Taj','','','');
 INSERT INTO utilisateur VALUES (DEFAULT,'Starlord', 'Lord', 'Star', 'M', 191919, '191-191-1919', DATE'1972-05-12',DEFAULT, '395 demigod', 'PPP QQQ', 'New Jersey', 'New York','','','');
 
-INSERT INTO employe VALUES ((select user_id from utilisateur where nom  = 'Nebula'), 'Temps plein', 1006000, 'directeur de succursale',null);
-INSERT INTO employe VALUES ((select user_id from utilisateur where nom  = 'Black'AND prenom='Panther'), 'Temps plein', 1002000, 'directeur de succursale',null);
-INSERT INTO employe VALUES ((select user_id from utilisateur where nom  = 'Drax'), 'Temps partiel', 93000, 'receptionniste',1);
-INSERT INTO employe VALUES ((select user_id from utilisateur where nom  = 'Ancient'), 'Temps plein', 100000, 'receptionniste',1);
-INSERT INTO employe VALUES ((select user_id from utilisateur where nom  = 'Ant'), 'Temps plein', 50000, 'receptionniste',2);
-INSERT INTO employe VALUES ((select user_id from utilisateur where nom  = 'Thanos'), 'Temps plein', 1000000, 'dentiste', 1);
-INSERT INTO employe VALUES ((select user_id from utilisateur where nom  = 'Iron'), 'Temps partiel', 100000, 'dentiste',2);
-INSERT INTO employe VALUES ((select user_id from utilisateur where nom  = 'Gamora'), 'Temps plein', 100000, 'dentiste',2);
-INSERT INTO employe VALUES ((select user_id from utilisateur where nom  = 'Hawkeye'), 'Temps plein', 1000, 'dentiste', 1);
-INSERT INTO employe VALUES ((select user_id from utilisateur where nom  = 'War'),'Temps plein', 106000, 'hygieniste',2);
-INSERT INTO employe VALUES ((select user_id from utilisateur where nom  = 'Doctor'), 'Temps partiel', 200000, 'hygieniste',2);
-INSERT INTO employe VALUES ((select user_id from utilisateur where nom  = 'Nick'), 'Temps plein', 100000, 'hygieniste',1);
-INSERT INTO employe VALUES ((select user_id from utilisateur where nom  = 'Star'), 'Temps plein', 550000, 'hygieniste',1);
+INSERT INTO employe VALUES ((select user_id from utilisateur where prenom  = 'Nebula'), 'Temps plein', 1006000, 'directeur de succursale',null);
+INSERT INTO employe VALUES ((select user_id from utilisateur where prenom  = 'Black'AND nom='Panther'), 'Temps plein', 1002000, 'directeur de succursale',null);
+INSERT INTO employe VALUES ((select user_id from utilisateur where prenom  = 'Drax'), 'Temps partiel', 93000, 'receptionniste',1);
+INSERT INTO employe VALUES ((select user_id from utilisateur where prenom  = 'Ancient'), 'Temps plein', 100000, 'receptionniste',1);
+INSERT INTO employe VALUES ((select user_id from utilisateur where prenom  = 'Ant'), 'Temps plein', 50000, 'receptionniste',2);
+INSERT INTO employe VALUES ((select user_id from utilisateur where prenom  = 'Thanos'), 'Temps plein', 1000000, 'dentiste', 1);
+INSERT INTO employe VALUES ((select user_id from utilisateur where prenom  = 'Iron'), 'Temps partiel', 100000, 'dentiste',2);
+INSERT INTO employe VALUES ((select user_id from utilisateur where prenom  = 'Gamora'), 'Temps plein', 100000, 'dentiste',2);
+INSERT INTO employe VALUES ((select user_id from utilisateur where prenom  = 'Hawkeye'), 'Temps plein', 1000, 'dentiste', 1);
+INSERT INTO employe VALUES ((select user_id from utilisateur where prenom  = 'War'),'Temps plein', 106000, 'hygieniste',2);
+INSERT INTO employe VALUES ((select user_id from utilisateur where prenom  = 'Doctor'), 'Temps partiel', 200000, 'hygieniste',2);
+INSERT INTO employe VALUES ((select user_id from utilisateur where prenom  = 'Nick'), 'Temps plein', 100000, 'hygieniste',1);
+INSERT INTO employe VALUES ((select user_id from utilisateur where prenom  = 'Star'), 'Temps plein', 550000, 'hygieniste',1);
 
 INSERT INTO succursale VALUES ('Wakanda', 2);
 INSERT INTO succursale VALUES ('New York', 1);
@@ -51,18 +51,18 @@ INSERT INTO employe_succursale VALUES ('New York', 9); #AncientOne
 INSERT INTO employe_succursale VALUES ('New York', 12); #Hawkeye
 INSERT INTO employe_succursale VALUES ('New York', 13); #NickFury
 
-INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Vision'), 'ultron@marvel.com', 'U1', 'Wakanda');
-INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Teenage'), 'rocket@marvel.com', 'TG2', 'Wakanda');
-INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Spider'), 'may@marvel.com', '', 'Wakanda'); #Pas dassurance
-INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Mantis'), 'mantis@marvel.com', 'M1', 'Wakanda');
-INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Black'AND prenom='Widow'), 'blackwidow@marvel.com', 'B1', 'New York'); #Pas dassurance
-INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Hulk'), 'bruce@marvel.com', '', 'New York');
-INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Ancient'), 'ancientone@marvel.com', 'A5', 'New York');
-INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'War'), 'warmachine@marvel.com', 'W5', 'Wakanda');
-INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Nick'), 'nick@marvel.com', 'N8', 'New York');
-INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Thanos'), 'purpletitan@marvel.com', 'T2', 'New York');
-INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Ant'), 'antman@marvel.com', 'A8', 'Wakanda');
-INSERT INTO patient VALUES ((select user_id from utilisateur where nom  = 'Drax'), 'drax@marvel.com', 'D9', 'New York');
+INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Vision'), 'ultron@marvel.com', 'U1', 'Wakanda');
+INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Teenage'), 'rocket@marvel.com', 'TG2', 'Wakanda');
+INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Spider'), 'may@marvel.com', '', 'Wakanda'); #Pas dassurance
+INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Mantis'), 'mantis@marvel.com', 'M1', 'Wakanda');
+INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Black'AND nom='Widow'), 'blackwidow@marvel.com', 'B1', 'New York'); #Pas dassurance
+INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Hulk'), 'bruce@marvel.com', '', 'New York');
+INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Ancient'), 'ancientone@marvel.com', 'A5', 'New York');
+INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'War'), 'warmachine@marvel.com', 'W5', 'Wakanda');
+INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Nick'), 'nick@marvel.com', 'N8', 'New York');
+INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Thanos'), 'purpletitan@marvel.com', 'T2', 'New York');
+INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Ant'), 'antman@marvel.com', 'A8', 'Wakanda');
+INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Drax'), 'drax@marvel.com', 'D9', 'New York');
 
 INSERT INTO rendez_vous VALUES (DEFAULT, 'Wakanda', 1, 6, 10, date'2022-04-20', time'08:00', time'09:00', 'nettoyage', 'termine', 1);
 INSERT INTO rendez_vous VALUES (DEFAULT, 'Wakanda', 2, 6, 11, date'2022-04-20', time'09:00', time'10:00', 'nettoyage', 'prevu', 1);
@@ -182,18 +182,18 @@ INSERT INTO reclamation VALUES (DEFAULT, 10, 80, DATE'2022-04-20');
 INSERT INTO reclamation VALUES (DEFAULT, 11, 68, DATE'2022-04-20');
 INSERT INTO reclamation VALUES (DEFAULT, 12, 55, DATE'2022-04-20');
 
-INSERT INTO dossier VALUES (1, 6);
-INSERT INTO dossier VALUES (2, 11);
-INSERT INTO dossier VALUES (3, 9);
-INSERT INTO dossier VALUES (4, 10);
-INSERT INTO dossier VALUES (5, 13);
-INSERT INTO dossier VALUES (6, 12);
-INSERT INTO dossier VALUES (7, 7);
-INSERT INTO dossier VALUES (8, 8);
-INSERT INTO dossier VALUES (9, 6);
-INSERT INTO dossier VALUES (10, 9);
-INSERT INTO dossier VALUES (11, 12);
-INSERT INTO dossier VALUES (12, 12);
+INSERT INTO dossier VALUES (DEFAULT, 1, 6);
+INSERT INTO dossier VALUES (DEFAULT, 2, 11);
+INSERT INTO dossier VALUES (DEFAULT, 3, 9);
+INSERT INTO dossier VALUES (DEFAULT, 4, 10);
+INSERT INTO dossier VALUES (DEFAULT, 5, 13);
+INSERT INTO dossier VALUES (DEFAULT, 6, 12);
+INSERT INTO dossier VALUES (DEFAULT, 7, 7);
+INSERT INTO dossier VALUES (DEFAULT, 8, 8);
+INSERT INTO dossier VALUES (DEFAULT, 9, 6);
+INSERT INTO dossier VALUES (DEFAULT, 10, 9);
+INSERT INTO dossier VALUES (DEFAULT, 11, 12);
+INSERT INTO dossier VALUES (DEFAULT, 12, 12);
 
 INSERT INTO inscrit_dans VALUES (2, NULL, 1);
 INSERT INTO inscrit_dans VALUES (2, NULL, 2);
