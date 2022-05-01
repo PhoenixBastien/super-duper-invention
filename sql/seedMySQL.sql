@@ -37,19 +37,19 @@ INSERT INTO employe VALUES ((select user_id from utilisateur where prenom  = 'St
 INSERT INTO succursale VALUES ('Wakanda', 2);
 INSERT INTO succursale VALUES ('New York', 1);
 
-INSERT INTO employe_succursale VALUES ('Wakanda', 2); #BlackPanther
-INSERT INTO employe_succursale VALUES ('Wakanda', 5); #AntMan
-INSERT INTO employe_succursale VALUES ('Wakanda', 7); #Gamora
-INSERT INTO employe_succursale VALUES ('Wakanda', 8); #DoctorStrange
-INSERT INTO employe_succursale VALUES ('Wakanda', 10); #IronMan
-INSERT INTO employe_succursale VALUES ('Wakanda', 11); #WarMachine
-INSERT INTO employe_succursale VALUES ('New York', 1); #Thanos
-INSERT INTO employe_succursale VALUES ('New York', 3); #Drax
-INSERT INTO employe_succursale VALUES ('New York', 4); #StarLord
-INSERT INTO employe_succursale VALUES ('New York', 6); #Nebula
-INSERT INTO employe_succursale VALUES ('New York', 9); #AncientOne
-INSERT INTO employe_succursale VALUES ('New York', 12); #Hawkeye
-INSERT INTO employe_succursale VALUES ('New York', 13); #NickFury
+INSERT INTO employe_succursale VALUES ('Wakanda', (select user_id from utilisateur where prenom  = 'Black'AND nom='Panther')); #BlackPanther
+INSERT INTO employe_succursale VALUES ('Wakanda', (select user_id from utilisateur where prenom  = 'Ant')); #AntMan
+INSERT INTO employe_succursale VALUES ('Wakanda', (select user_id from utilisateur where prenom  = 'Gamora')); #Gamora
+INSERT INTO employe_succursale VALUES ('Wakanda', (select user_id from utilisateur where prenom  = 'Doctor')); #DoctorStrange
+INSERT INTO employe_succursale VALUES ('Wakanda', (select user_id from utilisateur where prenom  = 'Iron')); #IronMan
+INSERT INTO employe_succursale VALUES ('Wakanda', (select user_id from utilisateur where prenom  = 'War')); #WarMachine
+INSERT INTO employe_succursale VALUES ('New York', (select user_id from utilisateur where prenom  = 'Thanos')); #Thanos
+INSERT INTO employe_succursale VALUES ('New York', (select user_id from utilisateur where prenom  = 'Drax')); #Drax
+INSERT INTO employe_succursale VALUES ('New York', (select user_id from utilisateur where prenom  = 'Star')); #StarLord
+INSERT INTO employe_succursale VALUES ('New York', (select user_id from utilisateur where prenom  = 'Nebula')); #Nebula
+INSERT INTO employe_succursale VALUES ('New York', (select user_id from utilisateur where prenom  = 'Ancient')); #AncientOne
+INSERT INTO employe_succursale VALUES ('New York', (select user_id from utilisateur where prenom  = 'Hawkeye')); #Hawkeye
+INSERT INTO employe_succursale VALUES ('New York', (select user_id from utilisateur where prenom  = 'Nick')); #NickFury
 
 INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Vision'), 'ultron@marvel.com', 'U1', 'Wakanda');
 INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Teenage'), 'rocket@marvel.com', 'TG2', 'Wakanda');

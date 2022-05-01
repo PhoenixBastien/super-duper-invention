@@ -30,8 +30,8 @@ CREATE TABLE employe (
   type VARCHAR(255) NOT NULL,
   salaire integer,
   CONSTRAINT checkSalary CHECK (salaire >= 0),
-  role VARCHAR(255) NOT NULL, # Choix: dentiste, receptionniste, hygieniste, directeur de succursale
-  CONSTRAINT checkRole check (role = 'dentiste' OR role = 'receptionniste' OR role = 'directeur de succursale' OR role = 'hygieniste'),
+  metier VARCHAR(255) NOT NULL, # Choix: dentiste, receptionniste, hygieniste, directeur de succursale
+  CONSTRAINT checkmetier check (metier = 'dentiste' OR metier = 'receptionniste' OR metier = 'directeur de succursale' OR metier = 'hygieniste'),
   superviseur_id INTEGER REFERENCES employe(id_employe) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
@@ -173,9 +173,3 @@ CREATE TABLE inscrit_dans (
   id_traitement INTEGER REFERENCES traitement(id_traitement) ON DELETE CASCADE ON UPDATE CASCADE,
   id_dossier INTEGER REFERENCES dossier(id_dossier) ON DELETE CASCADE ON UPDATE CASCADE
 );
-
-#CREATE TABLE note_dossier (
- # id_dossier INTEGER REFERENCES dossier(id_dossier) ON DELETE CASCADE ON UPDATE CASCADE,
-  #id_employe INTEGER REFERENCES employe(id_employe) ON DELETE CASCADE ON UPDATE CASCADE,
-  #PRIMARY KEY (id_dossier, id_employe)
-#);
