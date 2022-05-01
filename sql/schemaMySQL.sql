@@ -37,13 +37,13 @@ CREATE TABLE employe (
 
 CREATE TABLE succursale (
   ville VARCHAR(255),
-  directeur_id INTEGER REFERENCES employe(id_employe) ON DELETE CASCADE ON UPDATE CASCADE,
+  directeur_id INTEGER REFERENCES employe(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
   PRIMARY KEY (ville)
 );
 
 CREATE TABLE employe_succursale (
   succursale varchar(255) REFERENCES succursale(ville) ON DELETE CASCADE ON UPDATE CASCADE,
-  employe integer REFERENCES employe(id_employe) ON DELETE CASCADE ON UPDATE CASCADE,
+  employe integer REFERENCES employe(user_id) ON DELETE CASCADE ON UPDATE CASCADE,
   PRIMARY key (succursale, employe)
 );
 
