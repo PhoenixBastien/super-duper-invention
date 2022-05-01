@@ -114,7 +114,6 @@ CREATE TABLE procédure (
   frais INTEGER NOT NULL
 );
 
-
 CREATE TABLE procedure_rv ( #permet de lister toutes les procédures effectuées dans chaque rendez_vous
   id_appointment INTEGER REFERENCES rendez_vous(id_appointment) ON DELETE CASCADE ON UPDATE CASCADE,
   id_procedure INTEGER REFERENCES procédure(id_procedure) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -152,14 +151,15 @@ CREATE TABLE traitement (
 );
 
 CREATE TABLE frais (
-  id_frais SERIAL PRIMARY KEY,
+  id_frais INTEGER,
   id_procedure INTEGER REFERENCES procédure(id_procedure) ON DELETE CASCADE ON UPDATE CASCADE,
   id_traitement INTEGER REFERENCES traitement(id_traitement) ON DELETE CASCADE ON UPDATE CASCADE,
   code_frais VARCHAR(255),
   frais_procedure INTEGER NOT NULL,#ecrire 0 sil ny en a pas
   frais_traitement INTEGER NOT NULL, #ecrire 0 sil ny en a pas
   frais_penalite INTEGER NOT NULL,#ecrire 0 sil ny en a pas
-  frais_totaux INTEGER GENERATED ALWAYS AS (frais_penalite+frais_procedure+frais_traitement) STORED
+  frais_totaux INTEGER GENERATED ALWAYS AS (frais_penalite+frais_procedure+frais_traitement) STORED,
+  PRIMARY KEY (id_frais, id_procedure)
 );
 
 CREATE TABLE dossier (
@@ -174,8 +174,8 @@ CREATE TABLE inscrit_dans (
   id_dossier INTEGER REFERENCES dossier(id_dossier) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE note_dossier (
-  id_dossier INTEGER REFERENCES dossier(id_dossier) ON DELETE CASCADE ON UPDATE CASCADE,
-  id_employe INTEGER REFERENCES employe(id_employe) ON DELETE CASCADE ON UPDATE CASCADE,
-  PRIMARY KEY (id_dossier, id_employe)
-);
+#CREATE TABLE note_dossier (
+ # id_dossier INTEGER REFERENCES dossier(id_dossier) ON DELETE CASCADE ON UPDATE CASCADE,
+  #id_employe INTEGER REFERENCES employe(id_employe) ON DELETE CASCADE ON UPDATE CASCADE,
+  #PRIMARY KEY (id_dossier, id_employe)
+#);

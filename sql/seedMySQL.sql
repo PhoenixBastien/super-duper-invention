@@ -64,18 +64,18 @@ INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Th
 INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Ant'), 'antman@marvel.com', 'A8', 'Wakanda');
 INSERT INTO patient VALUES ((select user_id from utilisateur where prenom  = 'Drax'), 'drax@marvel.com', 'D9', 'New York');
 
-INSERT INTO rendez_vous VALUES (DEFAULT, 'Wakanda', 1, 6, 10, date'2022-04-20', time'08:00', time'09:00', 'nettoyage', 'termine', 1);
-INSERT INTO rendez_vous VALUES (DEFAULT, 'Wakanda', 2, 6, 11, date'2022-04-20', time'09:00', time'10:00', 'nettoyage', 'prevu', 1);
-INSERT INTO rendez_vous VALUES (DEFAULT, 'Wakanda', 3, 9, 11, date'2022-04-20', time'08:00', time'09:00', 'nettoyage', 'termine', 2);
-INSERT INTO rendez_vous VALUES (DEFAULT, 'Wakanda', 4, 9, 10, date'2022-04-20', time'09:00', time'11:00', 'operation', 'retard', 2);
-INSERT INTO rendez_vous VALUES (DEFAULT, 'New York', 5, 8, 13, date'2022-04-20', time'08:00', time'09:00', 'nettoyage', 'prevu', 1);
-INSERT INTO rendez_vous VALUES (DEFAULT, 'New York', 6, 7, 12, date'2022-04-20', time'08:00', time'09:00', 'nettoyage', 'prevu', 2);
-INSERT INTO rendez_vous VALUES (DEFAULT, 'New York', 7, 7, 13, date'2022-04-20', time'09:00', time'09:30', 'consultation', 'prevu', 2);
-INSERT INTO rendez_vous VALUES (DEFAULT, 'New York', 8, 8, 12, date'2022-04-20', time'09:00', time'09:45', 'suivi', 'prevu', 1);
-INSERT INTO rendez_vous VALUES (DEFAULT, 'New York', 9, 8, 13, date'2022-04-20', time'10:00', time'11:00', 'nettoyage', 'prevu', 1);
-INSERT INTO rendez_vous VALUES (DEFAULT, 'Wakanda', 10, 6, 10, date'2022-04-20', time'13:00', time'13:30', 'consultation', 'prevu', 1);
-INSERT INTO rendez_vous VALUES (DEFAULT, 'Wakanda', 11, 9, 11, date'2022-04-20', time'13:00', time'14:00', 'nettoyage', 'prevu', 2);
-INSERT INTO rendez_vous VALUES (DEFAULT, 'New York', 12, 8, 12, date'2022-04-20', time'11:00', time'12:00', 'nettoyage', 'prevu', 1);
+INSERT INTO rendez_vous VALUES (DEFAULT, 'Wakanda', (select user_id from utilisateur where prenom  = 'Vision'), 6, 10, date'2022-04-20', time'08:00', time'09:00', 'nettoyage', 'termine', 1);
+INSERT INTO rendez_vous VALUES (DEFAULT, 'Wakanda', (select user_id from utilisateur where prenom  = 'Teenage'), 6, 11, date'2022-04-20', time'09:00', time'10:00', 'nettoyage', 'prevu', 1);
+INSERT INTO rendez_vous VALUES (DEFAULT, 'Wakanda', (select user_id from utilisateur where prenom  = 'Spider'), 9, 11, date'2022-04-20', time'08:00', time'09:00', 'nettoyage', 'termine', 2);
+INSERT INTO rendez_vous VALUES (DEFAULT, 'Wakanda', (select user_id from utilisateur where prenom  = 'Mantis'), 9, 10, date'2022-04-20', time'09:00', time'11:00', 'operation', 'retard', 2);
+INSERT INTO rendez_vous VALUES (DEFAULT, 'New York', (select user_id from utilisateur where prenom  = 'Black' and nom = 'Widow'), 8, 13, date'2022-04-20', time'08:00', time'09:00', 'nettoyage', 'prevu', 1);
+INSERT INTO rendez_vous VALUES (DEFAULT, 'New York', (select user_id from utilisateur where prenom  = 'Hulk'), 7, 12, date'2022-04-20', time'08:00', time'09:00', 'nettoyage', 'prevu', 2);
+INSERT INTO rendez_vous VALUES (DEFAULT, 'New York', (select user_id from utilisateur where prenom  = 'Ancient'), 7, 13, date'2022-04-20', time'09:00', time'09:30', 'consultation', 'prevu', 2);
+INSERT INTO rendez_vous VALUES (DEFAULT, 'New York', (select user_id from utilisateur where prenom  = 'War'), 8, 12, date'2022-04-20', time'09:00', time'09:45', 'suivi', 'prevu', 1);
+INSERT INTO rendez_vous VALUES (DEFAULT, 'New York', (select user_id from utilisateur where prenom  = 'Nick'), 8, 13, date'2022-04-20', time'10:00', time'11:00', 'nettoyage', 'prevu', 1);
+INSERT INTO rendez_vous VALUES (DEFAULT, 'Wakanda', (select user_id from utilisateur where prenom  = 'Thanos'), 6, 10, date'2022-04-20', time'13:00', time'13:30', 'consultation', 'prevu', 1);
+INSERT INTO rendez_vous VALUES (DEFAULT, 'Wakanda', (select user_id from utilisateur where prenom  = 'Ant'), 9, 11, date'2022-04-20', time'13:00', time'14:00', 'nettoyage', 'prevu', 2);
+INSERT INTO rendez_vous VALUES (DEFAULT, 'New York', (select user_id from utilisateur where prenom  = 'Drax'), 8, 12, date'2022-04-20', time'11:00', time'12:00', 'nettoyage', 'prevu', 1);
 
 INSERT INTO procédure VALUES (DEFAULT, 'reparation carie', 'reparer une carie', 'molaire droite', 300);
 INSERT INTO procédure VALUES (DEFAULT, 'detartage', 'nettoyer les dents', 'toutes', 200);
@@ -105,32 +105,32 @@ INSERT INTO procedure_rv VALUES (10, 7);
 INSERT INTO procedure_rv VALUES (11, 2);
 INSERT INTO procedure_rv VALUES (12, 2);
 
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0,0,default);
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 1, 1, 'operation et acetaminophene', 300, 30, 14,default);
-INSERT INTO frais VALUES (DEFAULT, 3, 2, 'traitement de canal et calmant', 500, 20, 14,default);
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 5, 5, 'blanchiment des dents et produit blanchisseur', 500, 100, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 6, NULL, 'suivi', 50, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 7, NULL, 'consultation', 50, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0, 0,default);
-INSERT INTO frais VALUES (DEFAULT, 2, NULL, 'nettoyage', 200, 0, 0,default);
+INSERT INTO frais VALUES (1, 2, NULL, 'nettoyage', 200, 0,0,default);
+INSERT INTO frais VALUES (2, 2, NULL, 'nettoyage', 200, 0, 0,default);
+INSERT INTO frais VALUES (3, 2, NULL, 'nettoyage', 200, 0, 0,default);
+INSERT INTO frais VALUES (4, 1, 1, 'operation et acetaminophene', 300, 30, 14,default);
+INSERT INTO frais VALUES (4, 3, 2, 'traitement de canal et calmant', 500, 20, 14,default);
+INSERT INTO frais VALUES (5, 2, NULL, 'nettoyage', 200, 0, 0,default);
+INSERT INTO frais VALUES (6, 2, NULL, 'nettoyage', 200, 0, 0,default);
+INSERT INTO frais VALUES (7, 5, 5, 'blanchiment des dents et produit blanchisseur', 500, 100, 0,default);
+INSERT INTO frais VALUES (8, 6, NULL, 'suivi', 50, 0, 0,default);
+INSERT INTO frais VALUES (9, 2, NULL, 'nettoyage', 200, 0, 0,default);
+INSERT INTO frais VALUES (10, 7, NULL, 'consultation', 50, 0, 0,default);
+INSERT INTO frais VALUES (11, 2, NULL, 'nettoyage', 200, 0, 0,default);
+INSERT INTO frais VALUES (12, 2, NULL, 'nettoyage', 200, 0, 0,default);
 
-INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 1, 180, 10, 'yes');#Rabais enfant, le prix est 200$-10% = 270$
-INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 2, 180, 10, 'yes');#Rabais enfant
-INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 3, 180, 10, 'no');#Rabais enfant
-INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 4, 878, 0, 'yes');
-INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 5, 200, 0, 'yes');
-INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 6, 200, 0, 'no');
-INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 7, 300, 50, 'yes');#Reduction de 50% car rabais employé
-INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 8, 25, 50, 'yes');#Rabais employé
-INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 9, 100, 50, 'yes');#Rabais employé
-INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 10, 25, 50, 'yes');#Rabais employé
-INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 11, 100, 50, 'yes');#Rabais employé
-INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', 12, 100, 50, 'yes');#Rabais employé
+INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', (select user_id from utilisateur where prenom  = 'Vision'), 180, 10, 'yes');#Rabais enfant, le prix est 200$-10% = 270$
+INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', (select user_id from utilisateur where prenom  = 'Teenage'), 180, 10, 'yes');#Rabais enfant
+INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', (select user_id from utilisateur where prenom  = 'Spider'), 180, 10, 'no');#Rabais enfant
+INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', (select user_id from utilisateur where prenom  = 'Mantis'), 878, 0, 'yes');
+INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', (select user_id from utilisateur where prenom  = 'Black' and nom = 'Widow'), 200, 0, 'yes');
+INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', (select user_id from utilisateur where prenom  = 'Hulk'), 200, 0, 'no');
+INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', (select user_id from utilisateur where prenom  = 'Ancient'), 300, 50, 'yes');#Reduction de 50% car rabais employé
+INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', (select user_id from utilisateur where prenom  = 'War'), 25, 50, 'yes');#Rabais employé
+INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', (select user_id from utilisateur where prenom  = 'Nick'), 100, 50, 'yes');#Rabais employé
+INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', (select user_id from utilisateur where prenom  = 'Thanos'), 25, 50, 'yes');#Rabais employé
+INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', (select user_id from utilisateur where prenom  = 'Ant'), 100, 50, 'yes');#Rabais employé
+INSERT INTO facture VALUES (DEFAULT, DATE'2022-04-20', (select user_id from utilisateur where prenom  = 'Drax'), 100, 50, 'yes');#Rabais employé
 
 INSERT INTO facture_rv VALUES (1, 1);
 INSERT INTO facture_rv VALUES (2, 2);
@@ -145,18 +145,18 @@ INSERT INTO facture_rv VALUES (10, 10);
 INSERT INTO facture_rv VALUES (11, 11);
 INSERT INTO facture_rv VALUES (12, 12);
 
-INSERT INTO avis VALUES (DEFAULT, 1, 6, 1, 'tres gentil', 10, 4, 10);
-INSERT INTO avis VALUES (DEFAULT, 2, 11, 2, 'super service', 9, 10, 6);
-INSERT INTO avis VALUES (DEFAULT, 3, 9, 3, 'belle ambiance', 8, 9, 7);
-INSERT INTO avis VALUES (DEFAULT, 4, 10, 4, 'wow', 10, 8, 8);
-INSERT INTO avis VALUES (DEFAULT, 5, 13, 5, 'tres professionnel', 7, 9, 7);
-INSERT INTO avis VALUES (DEFAULT, 6, 12, 6, 'un peu de retard', 9, 8, 9);
-INSERT INTO avis VALUES (DEFAULT, 7, 7, 7, 'excellent', 10, 7, 5);
-INSERT INTO avis VALUES (DEFAULT, 8, 8, 8, 'tres dynamique', 7, 10, 8);
-INSERT INTO avis VALUES (DEFAULT, 9, 8, 9, 'merci', 9, 8, 10);
-INSERT INTO avis VALUES (DEFAULT, 10, 6, 10, 'belle experience', 6, 9, 9);
-INSERT INTO avis VALUES (DEFAULT, 11, 9, 11, 'je recommande', 10, 10, 8);
-INSERT INTO avis VALUES (DEFAULT, 12, 12, 12, 'bon service', 9, 7, 9);
+INSERT INTO avis VALUES (DEFAULT, (select user_id from utilisateur where prenom  = 'Vision'), 6, 1, 'tres gentil', 10, 4, 10);
+INSERT INTO avis VALUES (DEFAULT, (select user_id from utilisateur where prenom  = 'Teenage'), 11, 2, 'super service', 9, 10, 6);
+INSERT INTO avis VALUES (DEFAULT, (select user_id from utilisateur where prenom  = 'Spider'), 9, 3, 'belle ambiance', 8, 9, 7);
+INSERT INTO avis VALUES (DEFAULT, (select user_id from utilisateur where prenom  = 'Mantis'), 10, 4, 'wow', 10, 8, 8);
+INSERT INTO avis VALUES (DEFAULT, (select user_id from utilisateur where prenom  = 'Black' and nom = 'Widow'), 13, 5, 'tres professionnel', 7, 9, 7);
+INSERT INTO avis VALUES (DEFAULT, (select user_id from utilisateur where prenom  = 'Hulk'), 12, 6, 'un peu de retard', 9, 8, 9);
+INSERT INTO avis VALUES (DEFAULT, (select user_id from utilisateur where prenom  = 'Ancient'), 7, 7, 'excellent', 10, 7, 5);
+INSERT INTO avis VALUES (DEFAULT, (select user_id from utilisateur where prenom  = 'War'), 8, 8, 'tres dynamique', 7, 10, 8);
+INSERT INTO avis VALUES (DEFAULT, (select user_id from utilisateur where prenom  = 'Nick'), 8, 9, 'merci', 9, 8, 10);
+INSERT INTO avis VALUES (DEFAULT, (select user_id from utilisateur where prenom  = 'Thanos'), 6, 10, 'belle experience', 6, 9, 9);
+INSERT INTO avis VALUES (DEFAULT, (select user_id from utilisateur where prenom  = 'Ant'), 9, 11, 'je recommande', 10, 10, 8);
+INSERT INTO avis VALUES (DEFAULT, (select user_id from utilisateur where prenom  = 'Drax'), 12, 12, 'bon service', 9, 7, 9);
 
 INSERT INTO paiement VALUES (DEFAULT, 1, DATE'2022-04-20', 'mastercard');
 INSERT INTO paiement VALUES (DEFAULT, 2, DATE'2022-04-20', 'visa');
@@ -182,29 +182,29 @@ INSERT INTO reclamation VALUES (DEFAULT, 10, 80, DATE'2022-04-20');
 INSERT INTO reclamation VALUES (DEFAULT, 11, 68, DATE'2022-04-20');
 INSERT INTO reclamation VALUES (DEFAULT, 12, 55, DATE'2022-04-20');
 
-INSERT INTO dossier VALUES (DEFAULT, 1, 6);
-INSERT INTO dossier VALUES (DEFAULT, 2, 11);
-INSERT INTO dossier VALUES (DEFAULT, 3, 9);
-INSERT INTO dossier VALUES (DEFAULT, 4, 10);
-INSERT INTO dossier VALUES (DEFAULT, 5, 13);
-INSERT INTO dossier VALUES (DEFAULT, 6, 12);
-INSERT INTO dossier VALUES (DEFAULT, 7, 7);
-INSERT INTO dossier VALUES (DEFAULT, 8, 8);
-INSERT INTO dossier VALUES (DEFAULT, 9, 6);
-INSERT INTO dossier VALUES (DEFAULT, 10, 9);
-INSERT INTO dossier VALUES (DEFAULT, 11, 12);
-INSERT INTO dossier VALUES (DEFAULT, 12, 12);
+INSERT INTO dossier VALUES ((select user_id from utilisateur where prenom  = 'Vision'), 6);
+INSERT INTO dossier VALUES ((select user_id from utilisateur where prenom  = 'Teenage'), 11);
+INSERT INTO dossier VALUES ((select user_id from utilisateur where prenom  = 'Spider'), 9);
+INSERT INTO dossier VALUES ((select user_id from utilisateur where prenom  = 'Mantis'), 10);
+INSERT INTO dossier VALUES ((select user_id from utilisateur where prenom  = 'Black' and nom = 'Widow'), 13);
+INSERT INTO dossier VALUES ((select user_id from utilisateur where prenom  = 'Hulk'), 12);
+INSERT INTO dossier VALUES ((select user_id from utilisateur where prenom  = 'Ancient'), 7);
+INSERT INTO dossier VALUES ((select user_id from utilisateur where prenom  = 'War'), 8);
+INSERT INTO dossier VALUES ((select user_id from utilisateur where prenom  = 'Nick'), 6);
+INSERT INTO dossier VALUES ((select user_id from utilisateur where prenom  = 'Thanos'), 9);
+INSERT INTO dossier VALUES ((select user_id from utilisateur where prenom  = 'Ant'), 12);
+INSERT INTO dossier VALUES ((select user_id from utilisateur where prenom  = 'Drax'), 12);
 
-INSERT INTO inscrit_dans VALUES (2, NULL, 1);
-INSERT INTO inscrit_dans VALUES (2, NULL, 2);
-INSERT INTO inscrit_dans VALUES (2, NULL, 3);
-INSERT INTO inscrit_dans VALUES (1, 1, 4);
-INSERT INTO inscrit_dans VALUES (3, 2, 4);
-INSERT INTO inscrit_dans VALUES (2, NULL, 5);
-INSERT INTO inscrit_dans VALUES (2, NULL, 6);
-INSERT INTO inscrit_dans VALUES (5, 5, 7);
-INSERT INTO inscrit_dans VALUES (6, NULL, 8);
-INSERT INTO inscrit_dans VALUES (2, NULL, 9);
-INSERT INTO inscrit_dans VALUES (7, NULL, 10);
-INSERT INTO inscrit_dans VALUES (2, NULL, 11);
-INSERT INTO inscrit_dans VALUES (2, NULL, 12);
+INSERT INTO inscrit_dans VALUES (2, NULL, (select user_id from utilisateur where prenom  = 'Vision'));
+INSERT INTO inscrit_dans VALUES (2, NULL, (select user_id from utilisateur where prenom  = 'Teenage'));
+INSERT INTO inscrit_dans VALUES (2, NULL, (select user_id from utilisateur where prenom  = 'Spider'));
+INSERT INTO inscrit_dans VALUES (1, 1, (select user_id from utilisateur where prenom  = 'Mantis'));
+INSERT INTO inscrit_dans VALUES (3, 2, (select user_id from utilisateur where prenom  = 'Mantis'));
+INSERT INTO inscrit_dans VALUES (2, NULL, (select user_id from utilisateur where prenom  = 'Black' and nom = 'Widow'));
+INSERT INTO inscrit_dans VALUES (2, NULL, (select user_id from utilisateur where prenom  = 'Hulk'));
+INSERT INTO inscrit_dans VALUES (5, 5, (select user_id from utilisateur where prenom  = 'Ancient'));
+INSERT INTO inscrit_dans VALUES (6, NULL, (select user_id from utilisateur where prenom  = 'War'));
+INSERT INTO inscrit_dans VALUES (2, NULL, (select user_id from utilisateur where prenom  = 'Nick'));
+INSERT INTO inscrit_dans VALUES (7, NULL, (select user_id from utilisateur where prenom  = 'Thanos'));
+INSERT INTO inscrit_dans VALUES (2, NULL, (select user_id from utilisateur where prenom  = 'Ant'));
+INSERT INTO inscrit_dans VALUES (2, NULL, (select user_id from utilisateur where prenom  = 'Drax'));
