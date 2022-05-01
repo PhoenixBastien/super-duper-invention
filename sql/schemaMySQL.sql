@@ -30,8 +30,8 @@ CREATE TABLE employe (
   type VARCHAR(255) NOT NULL,
   salaire integer,
   CONSTRAINT checkSalary CHECK (salaire >= 0),
-  metier VARCHAR(255) NOT NULL, # Choix: dentiste, receptionniste, hygieniste, directeur de succursale
-  CONSTRAINT checkmetier check (metier = 'dentiste' OR metier = 'receptionniste' OR metier = 'directeur de succursale' OR metier = 'hygieniste'),
+  role VARCHAR(255) NOT NULL, # Choix: dentiste, receptionniste, hygieniste, directeur de succursale
+  CONSTRAINT checkrole check (role = 'dentiste' OR role = 'receptionniste' OR role = 'directeur de succursale' OR role = 'hygieniste'),
   superviseur_id INTEGER REFERENCES employe(id_employe) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
