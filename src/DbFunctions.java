@@ -1,4 +1,4 @@
-package com.clinique;
+package com.clinique.src;
 
 import java.sql.*;
 
@@ -196,6 +196,7 @@ public class DbFunctions {
         public static ResultSet getFacture(String nom, String prenom) throws SQLException {
                 Statement stmt = db.createStatement();
                 String sql = "SELECT * FROM facture WHERE id_patient = " + getUserid(nom, prenom);
+
                 return stmt.executeQuery(sql);
         }
 
@@ -298,7 +299,7 @@ public class DbFunctions {
         public static void main(String[] args) {
                 String url = "jdbc:mysql://localhost:3306/dentistry";
                 String user = "root";
-                String password = "Password";///// Change this
+                String password = "password";///// Change this
                 try {
                         db = DriverManager.getConnection(url, user, password);
 

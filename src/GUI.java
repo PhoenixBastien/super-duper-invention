@@ -1,4 +1,4 @@
-package com.clinique;
+package com.clinique.src;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -305,7 +305,7 @@ public class GUI implements java.awt.event.ActionListener {
         appView = new JButton("view appointments");
         register = new JButton("add a patient");
         appoint = new JButton("schedule appointment");
-        factView = new JButton("view appointment");
+        factView = new JButton("view facture");
         viewDossier = new JButton("view dossier");
         viewApp();
         viewAccount();
@@ -570,7 +570,7 @@ public class GUI implements java.awt.event.ActionListener {
                     frame.setLayout(null);
                     frame.setBounds((int) size.getWidth() / 2 - 150, (int) size.getHeight() / 2 - 325, 300, 650);
                     ResultSet apps = DbFunctions.getFacture(lastName.getText(), name.getText());
-
+                    apps.next();
                     int y = 30;
                     do {
                         JLabel a = new JLabel(
