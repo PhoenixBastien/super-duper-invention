@@ -36,6 +36,8 @@ public class GUI implements java.awt.event.ActionListener {
     JButton appoint;
     JButton updat;
     JButton addInf;
+    JButton employbutt;
+    JButton createEmp;
 
     JButton confirm;
     JTextField user;
@@ -75,6 +77,11 @@ public class GUI implements java.awt.event.ActionListener {
     JTextField stats;
     JTextField dossName;
     JTextField dossLastName;
+    JTextField type;
+    JTextField superName;
+    JTextField superLastName;
+    JTextField salary;
+    JTextField role;
 
     public GUI() {
 
@@ -275,11 +282,86 @@ public class GUI implements java.awt.event.ActionListener {
 
     }
 
+    public void createEmployee() {
+        ArrayList<JTextField> info = new ArrayList<JTextField>();
+        panel.setLayout(null);
+        frame.setBounds((int) size.getWidth() / 2 - 150, (int) size.getHeight() / 2 - 300, 300, 600);
+        JLabel regi = new JLabel("Register");
+        regi.setBounds(115, 10, 300, 30);
+        panel.add(regi);
+        create = new JButton("create account");
+        create.setBounds(70, 500, 160, 40);
+        panel.add(create);
+        newLastName = new JTextField();
+        newName = new JTextField();
+        pass = new JTextField();
+        gender = new JTextField();
+        ssn = new JTextField();
+        telephone = new JTextField();
+        birthday = new JTextField();
+        age = new JTextField();
+        adresse = new JTextField();
+        postalCode = new JTextField();
+        province = new JTextField();
+        town = new JTextField();
+        email = new JTextField();
+        assurance = new JTextField();
+        branch = new JTextField();
+
+        info.add(pass);
+        info.add(newName);
+        info.add(newLastName);
+        info.add(gender);
+        info.add(ssn);
+        info.add(telephone);
+        info.add(birthday);
+        info.add(age);
+        info.add(adresse);
+        info.add(postalCode);
+        info.add(province);
+        info.add(town);
+        info.add(email);
+        info.add(assurance);
+        info.add(branch);
+
+        ArrayList<JLabel> infolabel = new ArrayList<JLabel>();
+
+        infolabel.add(new JLabel("name"));
+        infolabel.add(new JLabel("lastname"));
+        infolabel.add(new JLabel("password"));
+        infolabel.add(new JLabel("gender"));
+        infolabel.add(new JLabel("ssn"));
+        infolabel.add(new JLabel("telephone"));
+        infolabel.add(new JLabel("birthday"));
+        infolabel.add(new JLabel("age"));
+        infolabel.add(new JLabel("adresse"));
+        infolabel.add(new JLabel("postalCode"));
+        infolabel.add(new JLabel("province"));
+        infolabel.add(new JLabel("town"));
+        infolabel.add(new JLabel("email"));
+        infolabel.add(new JLabel("assurance"));
+        infolabel.add(new JLabel("branch"));
+        createEmp();
+        int a = 50;
+        for (JTextField i : info) {
+            i.setBounds(100, a, 165, 25);
+            a = a + 30;
+            panel.add(i);
+        }
+        a = 50;
+        for (JLabel i : infolabel) {
+            i.setBounds(20, a, 70, 25);
+            a = a + 30;
+            panel.add(i);
+        }
+
+    }
+
     public void admin() {
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
-        panel.add(new JButton("add employee"));
-        panel.add(new JButton("view employees"));
-        panel.add(new JButton("view patients"));
+        createEmp = new JButton("add employee");
+        employeeCreate();
+        panel.add(createEmp);
 
     }
 
@@ -541,7 +623,7 @@ public class GUI implements java.awt.event.ActionListener {
                     frame.setLayout(null);
                     frame.setBounds((int) size.getWidth() / 2 - 150, (int) size.getHeight() / 2 - 325, 300, 650);
                     ResultSet apps = DbFunctions.getAppointments(lastName.getText(), name.getText());
-
+                    apps.next();
                     int y = 30;
                     do {
                         JLabel a = new JLabel(apps.getString(6) + " " + apps.getString(7) + "-" + apps.getString(8));
@@ -828,4 +910,117 @@ public class GUI implements java.awt.event.ActionListener {
         addInf.addActionListener(accountModification);
     }
 
+    public void employeeCreate() {
+        ActionListener accountCreation = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                panel.removeAll();
+                ArrayList<JTextField> info = new ArrayList<JTextField>();
+                panel.setLayout(null);
+                frame.setBounds((int) size.getWidth() / 2 - 150, (int) size.getHeight() / 2 - 300, 300, 650);
+                JLabel regi = new JLabel("Register");
+                regi.setBounds(115, 10, 300, 30);
+                panel.add(regi);
+                employbutt = new JButton("create account");
+                employbutt.setBounds(70, 550, 160, 40);
+                panel.add(employbutt);
+                newLastName = new JTextField();
+                newName = new JTextField();
+                pass = new JTextField();
+                gender = new JTextField();
+                ssn = new JTextField();
+                telephone = new JTextField();
+                birthday = new JTextField();
+                age = new JTextField();
+                adresse = new JTextField();
+                postalCode = new JTextField();
+                province = new JTextField();
+                town = new JTextField();
+                superName = new JTextField();
+                superLastName = new JTextField();
+
+                type = new JTextField();
+                role = new JTextField();
+                salary = new JTextField();
+                info.add(pass);
+                info.add(newName);
+                info.add(newLastName);
+                info.add(gender);
+                info.add(ssn);
+                info.add(telephone);
+                info.add(birthday);
+                info.add(age);
+                info.add(adresse);
+                info.add(postalCode);
+                info.add(province);
+                info.add(town);
+                info.add(type);
+                info.add(salary);
+                info.add(role);
+                info.add(superName);
+                info.add(superLastName);
+                ArrayList<JLabel> infolabel = new ArrayList<JLabel>();
+
+                infolabel.add(new JLabel("name"));
+                infolabel.add(new JLabel("lastname"));
+                infolabel.add(new JLabel("password"));
+                infolabel.add(new JLabel("gender"));
+                infolabel.add(new JLabel("ssn"));
+                infolabel.add(new JLabel("telephone"));
+                infolabel.add(new JLabel("birthday"));
+                infolabel.add(new JLabel("age"));
+                infolabel.add(new JLabel("adresse"));
+                infolabel.add(new JLabel("postalCode"));
+                infolabel.add(new JLabel("province"));
+                infolabel.add(new JLabel("town"));
+                infolabel.add(new JLabel("type"));
+                infolabel.add(new JLabel("salaire"));
+                infolabel.add(new JLabel("role"));
+                infolabel.add(new JLabel("Supervisor name"));
+                infolabel.add(new JLabel("Supervisor last name"));
+
+                createEmp();
+                int a = 50;
+                for (JTextField i : info) {
+                    i.setBounds(100, a, 165, 25);
+                    a = a + 30;
+                    panel.add(i);
+                }
+                a = 50;
+                for (JLabel i : infolabel) {
+                    i.setBounds(20, a, 70, 25);
+                    a = a + 30;
+                    panel.add(i);
+                }
+
+                panel.repaint();
+                panel.revalidate();
+            }
+        };
+        createEmp.addActionListener(accountCreation);
+    }
+
+    public void createEmp() {
+        ActionListener accountCreation = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+
+                try {
+                    DbFunctions.addayee(newLastName.getText(), newName.getText(), pass.getText(), gender.getText(),
+                            Integer.parseInt(ssn.getText()),
+                            telephone.getText(), birthday.getText(),
+                            adresse.getText(),
+                            postalCode.getText(), province.getText(), town.getText(), type.getText(),
+                            Integer.parseInt(salary.getText()),
+                            role.getText(),
+                            superLastName.getText(), superName.getText());
+                } catch (NumberFormatException | SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+            }
+        };
+        employbutt.addActionListener(accountCreation);
+    }
 }
