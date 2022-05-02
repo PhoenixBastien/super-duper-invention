@@ -1,10 +1,13 @@
-import javax.swing.*;
+package com.clinique;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
+import javax.swing.*;
 
 public class GUI implements java.awt.event.ActionListener {
     int x = 0;
@@ -25,16 +28,21 @@ public class GUI implements java.awt.event.ActionListener {
     JTextField lastName;
     JButton infoChange;
     JButton appView;
+    JButton factView;
+    JButton dossView;
+    JButton viewDossier;
     JButton register;
     JButton schedapp;
     JButton appoint;
     JButton updat;
     JButton addInf;
+
     JButton confirm;
     JTextField user;
     JTextField pass;
     JTextField newName;
     JTextField lastname;
+    JTextField newLastName;
     JTextField gender;
     JTextField ssn;
     JTextField telephone;
@@ -63,8 +71,10 @@ public class GUI implements java.awt.event.ActionListener {
     JTextField rvType;
     JTextField status;
     JTextField room;
-    JTextField procedure;
-    JTextField treatment;
+    JTextField proceedure;
+    JTextField stats;
+    JTextField dossName;
+    JTextField dossLastName;
 
     public GUI() {
 
@@ -72,7 +82,7 @@ public class GUI implements java.awt.event.ActionListener {
         panel = new JPanel();
         login = new JButton("login");
 
-        panel.setPreferredSize(new Dimension(300, 150));
+        panel.setPreferredSize(new Dimension(300, 200));
         frame.setLocation((int) size.getWidth() / 2 - 150, (int) size.getHeight() / 2 - 75);
 
         panel.setLayout(null);
@@ -96,7 +106,7 @@ public class GUI implements java.awt.event.ActionListener {
         JLabel label3 = new JLabel("password");
         label3.setBounds(20, 80, 80, 25);
         success = new JLabel("");
-        success.setBounds(50, 110, 200, 25);
+        success.setBounds(50, 140, 200, 25);
         name = new JTextField();
         name.setBounds(100, 20, 165, 25);
         lastName = new JTextField();
@@ -121,17 +131,15 @@ public class GUI implements java.awt.event.ActionListener {
     public void modAcc() {
         ArrayList<JTextField> info = new ArrayList<JTextField>();
         panel.setLayout(null);
-        frame.setBounds((int) size.getWidth() / 2 - 150, (int) size.getHeight() / 2 - 325, 300, 650);
-        JLabel regi = new JLabel("Register");
+        frame.setBounds((int) size.getWidth() / 2 - 150, (int) size.getHeight() / 2 - 285, 300, 575);
+        JLabel regi = new JLabel("Modify account");
         regi.setBounds(115, 10, 300, 30);
         panel.add(regi);
-        create = new JButton("create account");
-        create.setBounds(70, 550, 160, 40);
-        panel.add(create);
-        user = new JTextField();
-        pass = new JTextField();
-        name = new JTextField();
-        lastname = new JTextField();
+        addInf = new JButton("modify account");
+        addInf.setBounds(70, 480, 160, 40);
+        panel.add(addInf);
+        newName = new JTextField();
+        newLastName = new JTextField();
         gender = new JTextField();
         ssn = new JTextField();
         telephone = new JTextField();
@@ -144,10 +152,9 @@ public class GUI implements java.awt.event.ActionListener {
         email = new JTextField();
         assurance = new JTextField();
         branch = new JTextField();
-        info.add(user);
-        info.add(pass);
-        info.add(name);
-        info.add(lastname);
+
+        info.add(newName);
+        info.add(newLastName);
         info.add(gender);
         info.add(ssn);
         info.add(telephone);
@@ -162,84 +169,7 @@ public class GUI implements java.awt.event.ActionListener {
         info.add(branch);
 
         ArrayList<JLabel> infolabel = new ArrayList<JLabel>();
-        infolabel.add(new JLabel("username"));
-        infolabel.add(new JLabel("password"));
-        infolabel.add(new JLabel("name"));
-        infolabel.add(new JLabel("lastname"));
-        infolabel.add(new JLabel("gender"));
-        infolabel.add(new JLabel("ssn"));
-        infolabel.add(new JLabel("telephone"));
-        infolabel.add(new JLabel("birthday"));
-        infolabel.add(new JLabel("age"));
-        infolabel.add(new JLabel("adresse"));
-        infolabel.add(new JLabel("postalCode"));
-        infolabel.add(new JLabel("province"));
-        infolabel.add(new JLabel("town"));
-        infolabel.add(new JLabel("email"));
-        infolabel.add(new JLabel("assurance"));
-        infolabel.add(new JLabel("branch"));
-        createAccount();
-        int a = 50;
-        for (JTextField i : info) {
-            i.setBounds(100, a, 165, 25);
-            a = a + 30;
-            panel.add(i);
-        }
-        a = 50;
-        for (JLabel i : infolabel) {
-            i.setBounds(20, a, 70, 25);
-            a = a + 30;
-            panel.add(i);
-        }
 
-    }
-
-    public void register() {
-        ArrayList<JTextField> info = new ArrayList<JTextField>();
-        panel.setLayout(null);
-        frame.setBounds((int) size.getWidth() / 2 - 150, (int) size.getHeight() / 2 - 325, 300, 650);
-        JLabel regi = new JLabel("Register");
-        regi.setBounds(115, 10, 300, 30);
-        panel.add(regi);
-        create = new JButton("create account");
-        create.setBounds(70, 550, 160, 40);
-        panel.add(create);
-        user = new JTextField();
-        pass = new JTextField();
-        name = new JTextField();
-        lastname = new JTextField();
-        gender = new JTextField();
-        ssn = new JTextField();
-        telephone = new JTextField();
-        birthday = new JTextField();
-        age = new JTextField();
-        adresse = new JTextField();
-        postalCode = new JTextField();
-        province = new JTextField();
-        town = new JTextField();
-        email = new JTextField();
-        assurance = new JTextField();
-        branch = new JTextField();
-        info.add(user);
-        info.add(pass);
-        info.add(name);
-        info.add(lastname);
-        info.add(gender);
-        info.add(ssn);
-        info.add(telephone);
-        info.add(birthday);
-        info.add(age);
-        info.add(adresse);
-        info.add(postalCode);
-        info.add(province);
-        info.add(town);
-        info.add(email);
-        info.add(assurance);
-        info.add(branch);
-
-        ArrayList<JLabel> infolabel = new ArrayList<JLabel>();
-        infolabel.add(new JLabel("username"));
-        infolabel.add(new JLabel("password"));
         infolabel.add(new JLabel("name"));
         infolabel.add(new JLabel("lastname"));
         infolabel.add(new JLabel("gender"));
@@ -270,6 +200,81 @@ public class GUI implements java.awt.event.ActionListener {
 
     }
 
+    public void register() {
+        ArrayList<JTextField> info = new ArrayList<JTextField>();
+        panel.setLayout(null);
+        frame.setBounds((int) size.getWidth() / 2 - 150, (int) size.getHeight() / 2 - 300, 300, 600);
+        JLabel regi = new JLabel("Register");
+        regi.setBounds(115, 10, 300, 30);
+        panel.add(regi);
+        create = new JButton("create account");
+        create.setBounds(70, 500, 160, 40);
+        panel.add(create);
+        newLastName = new JTextField();
+        newName = new JTextField();
+        pass = new JTextField();
+        gender = new JTextField();
+        ssn = new JTextField();
+        telephone = new JTextField();
+        birthday = new JTextField();
+        age = new JTextField();
+        adresse = new JTextField();
+        postalCode = new JTextField();
+        province = new JTextField();
+        town = new JTextField();
+        email = new JTextField();
+        assurance = new JTextField();
+        branch = new JTextField();
+
+        info.add(pass);
+        info.add(newName);
+        info.add(newLastName);
+        info.add(gender);
+        info.add(ssn);
+        info.add(telephone);
+        info.add(birthday);
+        info.add(age);
+        info.add(adresse);
+        info.add(postalCode);
+        info.add(province);
+        info.add(town);
+        info.add(email);
+        info.add(assurance);
+        info.add(branch);
+
+        ArrayList<JLabel> infolabel = new ArrayList<JLabel>();
+
+        infolabel.add(new JLabel("name"));
+        infolabel.add(new JLabel("lastname"));
+        infolabel.add(new JLabel("password"));
+        infolabel.add(new JLabel("gender"));
+        infolabel.add(new JLabel("ssn"));
+        infolabel.add(new JLabel("telephone"));
+        infolabel.add(new JLabel("birthday"));
+        infolabel.add(new JLabel("age"));
+        infolabel.add(new JLabel("adresse"));
+        infolabel.add(new JLabel("postalCode"));
+        infolabel.add(new JLabel("province"));
+        infolabel.add(new JLabel("town"));
+        infolabel.add(new JLabel("email"));
+        infolabel.add(new JLabel("assurance"));
+        infolabel.add(new JLabel("branch"));
+        createAccount();
+        int a = 50;
+        for (JTextField i : info) {
+            i.setBounds(100, a, 165, 25);
+            a = a + 30;
+            panel.add(i);
+        }
+        a = 50;
+        for (JLabel i : infolabel) {
+            i.setBounds(20, a, 70, 25);
+            a = a + 30;
+            panel.add(i);
+        }
+
+    }
+
     public void admin() {
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         panel.add(new JButton("add employee"));
@@ -282,11 +287,13 @@ public class GUI implements java.awt.event.ActionListener {
         panel.setLayout(new BoxLayout(panel, BoxLayout.PAGE_AXIS));
         infoChange = new JButton("change info");
         appView = new JButton("view appointments");
+        factView = new JButton("view appointment");
         viewApp();
         viewAccount();
-
+        viewFact();
         panel.add(infoChange);
         panel.add(appView);
+        panel.add(factView);
         // need: change info
 
     }
@@ -298,25 +305,31 @@ public class GUI implements java.awt.event.ActionListener {
         appView = new JButton("view appointments");
         register = new JButton("add a patient");
         appoint = new JButton("schedule appointment");
+        factView = new JButton("view appointment");
+        viewDossier = new JButton("view dossier");
         viewApp();
         viewAccount();
         registerButton();
         appointAdd();
+        viewFact();
+        dossierScreen();
         panel.add(appoint);
         panel.add(register);
         panel.add(infoChange);
         panel.add(appView);
+        panel.add(factView);
+        panel.add(viewDossier);
     }
 
     public void addAppoint() {
         ArrayList<JTextField> info = new ArrayList<JTextField>();
         panel.setLayout(null);
-        frame.setBounds((int) size.getWidth() / 2 - 150, (int) size.getHeight() / 2 - 325, 300, 650);
+        frame.setBounds((int) size.getWidth() / 2 - 150, (int) size.getHeight() / 2 - 325, 300, 600);
         JLabel regi = new JLabel("appointment");
         regi.setBounds(115, 10, 300, 30);
         panel.add(regi);
         schedapp = new JButton("create rv");
-        schedapp.setBounds(70, 550, 160, 40);
+        schedapp.setBounds(70, 500, 160, 40);
         panel.add(schedapp);
         succ = new JTextField();
         patientLastName = new JTextField();
@@ -331,8 +344,8 @@ public class GUI implements java.awt.event.ActionListener {
         rvType = new JTextField();
         status = new JTextField();
         room = new JTextField();
-        procedure = new JTextField();
-        treatment = new JTextField();
+        proceedure = new JTextField();
+        stats = new JTextField();
 
         info.add(succ);
         info.add(patientLastName);
@@ -347,8 +360,8 @@ public class GUI implements java.awt.event.ActionListener {
         info.add(rvType);
         info.add(status);
         info.add(room);
-        info.add(procedure);
-        info.add(treatment);
+        info.add(proceedure);
+        info.add(stats);
 
         ArrayList<JLabel> infolabel = new ArrayList<JLabel>();
         infolabel.add(new JLabel("succ"));
@@ -365,8 +378,7 @@ public class GUI implements java.awt.event.ActionListener {
         infolabel.add(new JLabel("status"));
         infolabel.add(new JLabel("room"));
         infolabel.add(new JLabel("procedure"));
-        infolabel.add(new JLabel("treatment"));
-
+        infolabel.add(new JLabel("stats"));
 
         addApp();
 
@@ -415,6 +427,7 @@ public class GUI implements java.awt.event.ActionListener {
                                 panel.revalidate();
                                 panel.repaint();
                             } else if (DbFunctions.isPatient(DbFunctions.getUserid(lastUser, user))) {
+
                                 panel.removeAll();
                                 patientLogin();
                                 panel.revalidate();
@@ -449,9 +462,9 @@ public class GUI implements java.awt.event.ActionListener {
         ActionListener accountCreation = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-
+                panel.removeAll();
                 if (Integer.parseInt(age.getText()) < 16) {
-                    panel.removeAll();
+
                     frame.setBounds((int) size.getWidth() / 2 - 200, (int) size.getHeight() / 2 - 75, 400, 250);
                     label = new JLabel("parent last name");
                     label.setBounds(20, 20, 120, 25);
@@ -477,22 +490,29 @@ public class GUI implements java.awt.event.ActionListener {
                     panel.add(label2);
                     panel.add(label3);
                     panel.revalidate();
-                    panel.repaint();
                     confirm();
                 } else {
                     try {
-                        System.out.println("test");
-                        DbFunctions.addPatient(name.getText(), lastname.getText(), pass.getText(), gender.getText(),
+
+                        DbFunctions.addPatient(newName.getText(), newLastName.getText(), pass.getText(),
+                                gender.getText(),
                                 Integer.parseInt(ssn.getText()), telephone.getText(),
                                 birthday.getText(),
                                 adresse.getText(), postalCode.getText(),
                                 province.getText(), town.getText(), email.getText(), assurance.getText(),
                                 branch.getText());
+                        panel.removeAll();
+                        employeeLogin();
+                        panel.revalidate();
+                        panel.repaint();
                     } catch (SQLException e) {
 
                         e.printStackTrace();
                     }
+
                 }
+                panel.repaint();
+
             }
         };
         create.addActionListener(accountCreation);
@@ -502,7 +522,11 @@ public class GUI implements java.awt.event.ActionListener {
         ActionListener view = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
-                register();
+                panel.removeAll();
+                modAcc();
+                panel.revalidate();
+                panel.repaint();
+                ;
             }
         };
         infoChange.addActionListener(view);
@@ -519,13 +543,13 @@ public class GUI implements java.awt.event.ActionListener {
                     ResultSet apps = DbFunctions.getAppointments(lastName.getText(), name.getText());
 
                     int y = 30;
-                    while (apps.next()) {
+                    do {
                         JLabel a = new JLabel(apps.getString(6) + " " + apps.getString(7) + "-" + apps.getString(8));
                         a.setBounds(20, y, 280, 25);
                         panel.add(a);
 
                         y = y + 30;
-                    }
+                    } while (apps.next());
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -537,13 +561,112 @@ public class GUI implements java.awt.event.ActionListener {
         appView.addActionListener(appoint);
     }
 
+    public void viewFact() {
+        ActionListener appoint = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    panel.removeAll();
+                    frame.setLayout(null);
+                    frame.setBounds((int) size.getWidth() / 2 - 150, (int) size.getHeight() / 2 - 325, 300, 650);
+                    ResultSet apps = DbFunctions.getFacture(lastName.getText(), name.getText());
+
+                    int y = 30;
+                    do {
+                        JLabel a = new JLabel(
+                                "date: " + apps.getString(2) + " cost:  " + apps.getString(4) + "$ assurance: "
+                                        + apps.getString(6));
+                        a.setBounds(20, y, 280, 25);
+                        panel.add(a);
+
+                        y = y + 30;
+                    } while (apps.next());
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                panel.revalidate();
+                panel.repaint();
+            }
+        };
+        factView.addActionListener(appoint);
+    }
+
+    public void viewDoss() {
+        ActionListener appoint = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                try {
+                    panel.removeAll();
+
+                    frame.setLayout(null);
+                    frame.setBounds((int) size.getWidth() / 2 - 150, (int) size.getHeight() / 2 - 325, 300, 650);
+                    ResultSet apps = DbFunctions.getDossier(dossLastName.getText(), dossName.getText());
+
+                    int y = 30;
+
+                    do {
+
+                        JLabel a = new JLabel(
+                                " " + apps.getString(1) + " " + apps.getString(2) + " " + apps.getString(3));
+                        a.setBounds(20, y, 280, 25);
+                        panel.add(a);
+
+                        y = y + 30;
+                    } while (apps.next());
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+                panel.revalidate();
+                panel.repaint();
+            }
+        };
+        dossView.addActionListener(appoint);
+    }
+
+    public void dossierScreen() {
+        ActionListener accountCreation = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent ae) {
+                panel.removeAll();
+                panel.setLayout(null);
+                dossView = new JButton("view dossier");
+                frame.setBounds((int) size.getWidth() / 2 - 200, (int) size.getHeight() / 2 - 75, 300, 200);
+                label = new JLabel("name");
+                label.setBounds(20, 40, 80, 25);
+                label2 = new JLabel("last name");
+                label2.setBounds(20, 70, 80, 25);
+                JLabel label3 = new JLabel("Which patient?");
+                label3.setBounds(95, 10, 110, 25);
+                dossName = new JTextField();
+                dossName.setBounds(100, 40, 165, 25);
+                dossLastName = new JTextField();
+                dossLastName.setBounds(100, 70, 165, 25);
+                dossView.setBounds(113, 110, 75, 25);
+                viewDoss();
+                panel.add(label);
+                panel.add(label2);
+                panel.add(label3);
+                panel.add(dossName);
+                panel.add(dossLastName);
+                panel.add(dossView);
+                panel.revalidate();
+                panel.repaint();
+
+            }
+        };
+        viewDossier.addActionListener(accountCreation);
+
+    }
+
     public void confirm() {
 
         ActionListener conf = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
-                    DbFunctions.addPatient(name.getText(), lastname.getText(), pass.getText(), gender.getText(),
+                    DbFunctions.addPatient(newName.getText(), newLastName.getText(), pass.getText(), gender.getText(),
                             Integer.parseInt(ssn.getText()), telephone.getText(),
                             birthday.getText(),
                             adresse.getText(), postalCode.getText(),
@@ -552,6 +675,7 @@ public class GUI implements java.awt.event.ActionListener {
                             email.getText(),
                             assurance.getText(),
                             branch.getText());
+                    employeeLogin();
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -567,9 +691,11 @@ public class GUI implements java.awt.event.ActionListener {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
+
+                    System.out.println(name.getText());
                     DbFunctions.modPatient(DbFunctions.getUserid(name.getText(), lastName.getText()),
-                            name.getText(),
-                            lastname.getText(), gender.getText(),
+                            newName.getText(),
+                            newLastName.getText(), gender.getText(),
                             Integer.parseInt(ssn.getText()), telephone.getText(),
                             birthday.getText(),
                             adresse.getText(), postalCode.getText(),
@@ -578,6 +704,7 @@ public class GUI implements java.awt.event.ActionListener {
                             email.getText(),
                             assurance.getText(),
                             branch.getText());
+
                 } catch (SQLException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -605,14 +732,19 @@ public class GUI implements java.awt.event.ActionListener {
             @Override
             public void actionPerformed(ActionEvent ae) {
                 try {
+
                     DbFunctions.addAppointment(succ.getText(), patientLastName.getText(), patientName.getText(),
                             dentistLastName.getText(),
                             dentistName.getText(),
                             hygLastName.getText(),
                             hygName.getText(), rvdate.getText(), startTime.getText(), endTime.getText(),
                             rvType.getText(),
-                            status.getText(), Integer.parseInt(room.getText()), Integer.parseInt(procedure.getText()),
-                            Integer.parseInt(procedure.getText()));
+                            status.getText(), Integer.parseInt(room.getText()), Integer.parseInt(proceedure.getText()),
+                            Integer.parseInt(stats.getText()));
+                    panel.removeAll();
+                    employeeLogin();
+                    panel.revalidate();
+                    panel.repaint();
                 } catch (NumberFormatException e) {
                     // TODO Auto-generated catch block
                     e.printStackTrace();
@@ -627,12 +759,13 @@ public class GUI implements java.awt.event.ActionListener {
     }
 
     public void modifyAccount() {
-        ActionListener accountCreation = new ActionListener() {
+        ActionListener accountModification = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent ae) {
+                panel.removeAll();
 
                 if (Integer.parseInt(age.getText()) < 16) {
-                    panel.removeAll();
+
                     frame.setBounds((int) size.getWidth() / 2 - 200, (int) size.getHeight() / 2 - 75, 400, 250);
                     label = new JLabel("parent last name");
                     label.setBounds(20, 20, 120, 25);
@@ -662,22 +795,37 @@ public class GUI implements java.awt.event.ActionListener {
                     update();
                 } else {
                     try {
-                        System.out.println("test");
+
                         DbFunctions.modPatient(
-                                DbFunctions.getUserid(name.getText(), lastName.getText()),
-                                name.getText(), lastname.getText(), gender.getText(),
+                                DbFunctions.getUserid(lastName.getText(), name.getText()),
+                                newName.getText(), newLastName.getText(), gender.getText(),
                                 Integer.parseInt(ssn.getText()), telephone.getText(),
-                                birthday.getText(), adresse.getText(), postalCode.getText(),
+                                birthday.getText(),
+                                adresse.getText(), postalCode.getText(),
                                 province.getText(), town.getText(), email.getText(), assurance.getText(),
                                 branch.getText());
+                        panel.revalidate();
+                        panel.repaint();
                     } catch (SQLException e) {
 
                         e.printStackTrace();
                     }
                 }
+                lastName = newLastName;
+                name = newName;
+                try {
+                    if (DbFunctions.isEmployee(DbFunctions.getUserid(lastName.getText(), name.getText()))) {
+                        employeeLogin();
+                    } else {
+                        patientLogin();
+                    }
+                } catch (SQLException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
             }
         };
-        create.addActionListener(accountCreation);
+        addInf.addActionListener(accountModification);
     }
 
 }
