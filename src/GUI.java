@@ -1,5 +1,3 @@
-package com.clinique.src;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,7 +7,7 @@ import java.util.ArrayList;
 
 import javax.swing.*;
 
-public class GUI implements java.awt.event.ActionListener {
+public class GUI implements ActionListener {
     int x = 0;
 
     JFrame frame;

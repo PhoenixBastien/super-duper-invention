@@ -1,5 +1,3 @@
-package com.clinique.src;
-
 import java.sql.*;
 
 public class DbFunctions {
@@ -301,7 +299,7 @@ public class DbFunctions {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/dentistry";
         String user = "root";
-        String password = "pass";///// Change this
+        String password = "MyPassword$";///// Change this
         try {
             db = DriverManager.getConnection(url, user, password);
 
