@@ -301,7 +301,7 @@ public class DbFunctions {
     public static void main(String[] args) {
         String url = "jdbc:mysql://localhost:3306/dentistry";
         String user = "root";
-        String password = "uOttawa2020";///// Change this
+        String password = "pass";///// Change this
         try {
             db = DriverManager.getConnection(url, user, password);
 
